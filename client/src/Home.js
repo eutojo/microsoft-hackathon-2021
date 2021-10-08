@@ -1,4 +1,5 @@
 import React from "react";
+import Window from './assets/components/Window'
 
 export default class Home extends React.Component{
     constructor(props){
@@ -27,8 +28,8 @@ export default class Home extends React.Component{
 
     render(){
         return(
-            <div>
-                Time this page was loaded: {this.state.time}
+            <div className="container">
+                <Window />
             </div>
         );
     }
