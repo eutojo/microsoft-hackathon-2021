@@ -1,0 +1,35 @@
+.content-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.tab {
+    display: flex;
+    flex-direction: row;
+
+    div {
+        padding: 0.05em 0.5em;
+    }
+}
+
+.left-panel {
+    flex: 2;
+    padding: 0.5em;
+}
+
+.right-panel {
+    flex: 1;
+
+    
+    .content {
+        display: flex;
+        flex-direction: column;
+        padding: 0.5em;
+    }
+
+    .tab {
+        div {
+            flex: 1;
+        }
+    }
+}

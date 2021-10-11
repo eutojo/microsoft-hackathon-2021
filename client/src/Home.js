@@ -1,5 +1,5 @@
 import React from "react";
-import Window from './assets/components/Window'
+import NewMeeting from './pages/NewMeeting'
 
 export default class Home extends React.Component{
     constructor(props){
@@ -29,7 +29,7 @@ export default class Home extends React.Component{
     render(){
         return(
             <div className="container">
-                <Window />
+                <NewMeeting />
             </div>
         );
     }
