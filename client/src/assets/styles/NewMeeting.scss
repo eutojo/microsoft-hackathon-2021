@@ -15,6 +15,20 @@
 .left-panel {
     flex: 2;
     padding: 0.5em;
+
+    &.building-view {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+
+        .floor-display {
+            display: flex;
+            flex-direction:column-reverse;
+            align-items: center;
+            width: 100%
+        }
+    }
 }
 
 .right-panel {
@@ -31,5 +45,26 @@
         div {
             flex: 1;
         }
+    }
+}
+
+.floor {
+    height: 3.5em;
+    width: 50%;
+    border: 1px solid red;
+    margin: -0.5em 0.5em;
+    transform: skew(20deg);
+    background-color: white;
+
+    &:last-of-type {
+        margin-top: 10px;
+    }
+
+    &:first-of-type {
+        margin-bottom: 10px;
+    }
+
+    &.selected {
+        background-color: red;
     }
 }
