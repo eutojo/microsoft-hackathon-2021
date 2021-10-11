@@ -1,0 +1,38 @@
+{
+    "groundLevel": [
+        {
+            "coordinates": {
+                "x": 0,
+                "y": 0
+            },
+            "value": 0,
+            "room": null
+        },
+        {
+            "coordinates": {
+                "x": 1,
+                "y": 0
+            },
+            "value": 1,
+            "room": null
+        }
+    ],
+    "level1": [
+        {
+            "coordinates": {
+                "x": 0,
+                "y": 0
+            },
+            "value": 2,
+            "room": null
+        },
+        {
+            "coordinates": {
+                "x": 1,
+                "y": 0
+            },
+            "value": 4,
+            "room": null
+        }
+    ]
+}
