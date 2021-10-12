@@ -26,9 +26,7 @@ export default class LocationDetails extends React.Component {
                         <div onClick={() => this.clearFilter()} >Clear Filters</div>
                     </div>
                     <select onChange={(e) => this.props.setBuilding(e.target.value)}>
-                        {this.props.building == "" &&
-                            <option disabled selected value> Select a building </option>
-                        }
+                        <option disabled selected = {this.props.building == ""} value> Select a building </option>
                         <option name="foundry">Foundry</option>
                         <option name="axle">Axle</option>
                     </select>
@@ -42,12 +40,10 @@ export default class LocationDetails extends React.Component {
                         <div>
                             <div>Floor</div>
                             <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.value)}>
+                                <option disabled selected value> Select a floor </option>
                                 {this.props.building != "" && Object.entries(this.props.floors).map(([key, value]) => 
-                                    <option value={key} selected={this.props.selectedFloor == key}>{value}</option>
+                                    <option value={key}>{value}</option>
                                 )}
-                                {this.props.building == ""  &&
-                                    <option disabled selected value> Any </option>
-                                }
                             </select>
                         </div>
                     </div>
