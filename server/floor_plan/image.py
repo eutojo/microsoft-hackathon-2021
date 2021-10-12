@@ -46,19 +46,20 @@ def bfs(image_array, start_node, row_size, col_size):
     x = current_node[0]
     y = current_node[1]
 
-    print(x,y)
+    if visited[y][x]==1:
+      continue
+
     visited[y][x]=1
 
     # Look at its neighbours
     # Out of bounds check
-    
+
     # Look up
     if (x >= 0) and (x < row_size) and (y-1 > 0) and (y-1 < col_size):
       # free space is 1, and not visited is 0
       if image_array[y-1][x] == 1 and visited[y-1][x] != 1:
         queue.append((x,y-1))
 
-    print(x,y)
     # Look down
     if (x >= 0) and (x < row_size) and (y+1 > 0) and (y+1 < col_size):
       # free space is 1, and not visited is 0
@@ -76,11 +77,11 @@ def bfs(image_array, start_node, row_size, col_size):
       # free space is 1, and not visited is 0
       if image_array[y][x+1] == 1 and visited[y][x+1] != 1:
         queue.append((x+1,y))
-
   return visited
 
 
 im = Image.open('./test_img.png')
+
 row,col = im.size
 print(row,col)
 data=[] #r,g,b,i,j
@@ -92,14 +93,5 @@ for i in range(col):
         col_data.append(help(pixels[j,i]))
     data.append(col_data)
 
-print(bfs(data, (1,1), row, col))
-
-# # print(data)
-# print(row,col)
-# bfs(data, visited, (1,1), row, col)
-# print(len(set(visited)))
-
-print(bfs(data, (1,1), row, col))
-# print("\n\n")
-# print(data)
+print(bfs(data, (16,17), row, col))
 
