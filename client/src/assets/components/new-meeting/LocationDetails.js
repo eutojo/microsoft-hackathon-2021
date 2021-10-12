@@ -26,7 +26,9 @@ export default class LocationDetails extends React.Component {
                         <div onClick={() => this.clearFilter()} >Clear Filters</div>
                     </div>
                     <select onChange={(e) => this.props.setBuilding(e.target.value)}>
-                        <option disabled selected value> Select a building </option>
+                        {this.props.building == "" &&
+                            <option disabled selected value> Select a building </option>
+                        }
                         <option name="foundry">Foundry</option>
                         <option name="axle">Axle</option>
                     </select>
