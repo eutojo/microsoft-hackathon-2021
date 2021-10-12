@@ -6,7 +6,7 @@ import FloorView from "../assets/components/new-meeting/FloorView"
 
 import { FaCircle } from 'react-icons/fa';
 import { RiUserSettingsLine, RiCalendarLine } from 'react-icons/ri';
-import { MdLockOutline, MdSystemSecurityUpdate } from 'react-icons/md';
+import { MdLockOutline } from 'react-icons/md';
 import { ImAttachment } from 'react-icons/im';
 import { BsThreeDots } from 'react-icons/bs';
 
@@ -17,10 +17,10 @@ export default class NewMeeting extends React.Component {
             'building': '',
             'selectedFloor': '',
             'floors': {
-                0: 'ground floor',
-                1: 'first floor',
-                2: 'second floor',
-                3: 'third floor'
+                0: 'Ground Floor',
+                1: 'First Floor',
+                2: 'Second Floor',
+                3: 'Third Floor'
             }
         }
 
@@ -55,7 +55,7 @@ export default class NewMeeting extends React.Component {
         return(
             <div className="window-container">
                 <div className="tab">
-                    <div><FaCircle /> Busy</div>
+                    <div><FaCircle className="busy" /> Busy</div>
                     <div><MdLockOutline /> Mark as Private</div>
                     <div><RiUserSettingsLine /> Attendee Options</div>
                     <div><RiCalendarLine /> Scheduling Assistant</div>
@@ -73,7 +73,9 @@ export default class NewMeeting extends React.Component {
                     {this.state.building != '' && this.state.selectedFloor != '' &&
                         <FloorView
                             selectedBuilding={this.state.building}
-                            selectedFloor={this.state.selectedFloor}/>
+                            selectedFloor={this.state.selectedFloor}
+                            setFloor={this.setFloor}
+                            />
                     }
                     {this.state.building == '' &&
                         <MeetingDetails />

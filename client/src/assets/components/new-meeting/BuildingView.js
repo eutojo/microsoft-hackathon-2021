@@ -8,14 +8,20 @@ export default class MeetingDetails extends React.Component {
         }
 
         this.selectFloor = this.selectFloor.bind(this);
+        this.hoverFloor = this.hoverFloor.bind(this);
     }
 
     componentDidMount(){
         this.selectFloor(0);
     }
 
+    hoverFloor(floor){
+        const element = document.getElementById("floor-name")
+        element.innerHTML = floor;
+    }
+
     selectFloor(floor){
-        console.log(floor)
+        this.hoverFloor("")
         this.props.setFloor(floor)
         this.forceUpdate()
     }
@@ -23,15 +29,14 @@ export default class MeetingDetails extends React.Component {
     render(){
         return(
             <div className="left-panel building-view">
-                {this.props.selectedBuilding}
+                <h1>{this.props.selectedBuilding}</h1>
                 <div className="floor-display">
                     {Object.entries(this.props.floors).map(([key, value]) => 
-                        <div className={`floor ${this.props.selectedFloor == key ? "selected" : ""}`} id={"floor-"+key} onClick={() => this.selectFloor(key)}></div>
+                        <div className="floor" id={"floor-"+key} onClick={() => this.selectFloor(value)} onMouseOver={() => this.hoverFloor(value)} onMouseOut={() => this.hoverFloor("")}></div>
                     )}
                 </div>
-                <div>
-                    {this.props.floors[this.props.selectedFloor]}
-                </div>
+                <h2 id="floor-name">
+                </h2>
             </div>
         );
     }

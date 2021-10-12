@@ -42,7 +42,7 @@ export default class LocationDetails extends React.Component {
                             <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.value)}>
                                 <option disabled selected value> Select a floor </option>
                                 {this.props.building != "" && Object.entries(this.props.floors).map(([key, value]) => 
-                                    <option value={key}>{value}</option>
+                                    <option value={value}>{value}</option>
                                 )}
                             </select>
                         </div>
