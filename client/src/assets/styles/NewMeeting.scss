@@ -1,24 +1,62 @@
 .content-container {
     display: flex;
     flex-direction: row;
+    height: 80vh;
 }
 
 .tab {
     display: flex;
     flex-direction: row;
+    background-color: $grey;
+    width: 100%;
 
     div {
-        padding: 0.05em 0.5em;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5em 1em;
+        
+        svg {
+            padding-right: 0.5em;
+        }
     }
 }
 
 .left-panel {
     flex: 2;
-    padding: 0.5em;
+    padding: 1em; 
+    color: $grey;
+    background-color: $dark-background;
+
+    &.meeting-details {
+        .entry {
+            
+            &:not(:first-of-type){
+                margin-top: 1em;
+
+            }
+            
+            div{
+                display: flex;
+                flex-direction: row;
+
+                div {
+                    width: 100%;
+                    padding-bottom: 0.5em;
+                    border-bottom: 1px solid $grey;
+                }
+
+                svg {
+                    padding-right: 1em;
+                }
+            }
+        }
+    }
 
     &.building-view {
         display: flex;
         flex-direction: column;
+        justify-content: space-between;
         align-items: center;
         width: 100%;
 
@@ -34,16 +72,59 @@
 .right-panel {
     flex: 1;
 
-    
+    background-color: $grey;
+
     .content {
         display: flex;
         flex-direction: column;
-        padding: 0.5em;
+        padding: 1em;
+
+        select {
+            margin-bottom: 1em;
+        }
+
+        .row {
+            margin-bottom: 1em;
+
+            &:first-of-type {
+                justify-content: space-between;
+            }
+
+            &.double {
+                width: 100%;
+
+                div {
+                    width: 30%;
+
+                    &:first-of-type {
+                        margin-right: 1em;
+                    }
+
+                    &:first-child {
+                        margin-bottom: 1em;
+                    }
+
+                    select {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+
+
     }
 
     .tab {
+        color: $grey;
+        background-color: $grey-background;
         div {
             flex: 1;
+            padding: 1em;
+            font-weight: bold;
+
+            &.selected {
+                border-bottom: 4px solid $blue;
+            }
         }
     }
 }
