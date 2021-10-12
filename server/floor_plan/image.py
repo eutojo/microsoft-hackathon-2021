@@ -80,7 +80,7 @@ def bfs(image_array, start_node, row_size, col_size):
   return visited
 
 
-im = Image.open('./image.png')
+im = Image.open('./test_img.png')
 row,col = im.size
 print(row,col)
 data=[] #r,g,b,i,j
