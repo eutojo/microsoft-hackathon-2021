@@ -29,10 +29,10 @@ class DataService:
         data={} #r,g,b,i,j
         pixels=im.load()
         im = im.convert('1')
-        for i in range(row):
+        for i in range(col):
             col_data = []
-            for j in range(col):
-                col_data.append(pixels[i,j])
+            for j in range(row):
+                col_data.append(pixels[j,i])
             data[i] = col_data
         return jsonify(data)
 

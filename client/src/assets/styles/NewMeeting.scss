@@ -56,9 +56,12 @@
     &.building-view {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         width: 100%;
+
+        &:not(.floor-view){
+            justify-content: space-between;
+        }
 
         .floor-display {
             display: flex;
@@ -68,8 +71,8 @@
         }
 
         .plan {
-            width: 10px;
-            height: 10px;
+            width: 50px;
+            height: 1px;
             &.column {
                 display: flex;
                 flex-direction: column;

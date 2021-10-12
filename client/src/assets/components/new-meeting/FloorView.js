@@ -23,11 +23,11 @@ export default class MeetingDetails extends React.Component {
 
     render(){
         return(
-            <div className="left-panel building-view">
+            <div className="left-panel building-view floor-view">
                 {this.props.selectedBuilding}
                 {this.props.floorplan != "" && Object.entries(this.state.floorplan).map(([floor, value]) => 
                     <div className="plan row">
-                        {value.map((points) => <div className={`plan column ${points.includes("255") ? `color` : `no-color`}`} ></div>)}
+                        {value.map((points) => <div className={`plan column ${points.includes(255) ? `color` : `no-color`}`} > </div>)}
                     </div>
                 )}
             </div>
