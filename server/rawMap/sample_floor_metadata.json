@@ -1,0 +1,17 @@
+{
+    "name": "Ground Level",
+    "floor_id": 1,
+    "building_id": 1,
+    "rooms":[
+        {
+            "coordinates": {
+                "x": 1,
+                "y": 0
+            },
+            "value": 4,
+            "room": "G01",
+            
+            
+        }
+    ]
+}
