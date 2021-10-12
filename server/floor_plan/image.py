@@ -93,5 +93,5 @@ for i in range(col):
         col_data.append(help(pixels[j,i]))
     data.append(col_data)
 
-print(bfs(data, (16,17), row, col))
+print(bfs(data, (1,1), row, col))
 
