@@ -4,12 +4,6 @@ export default class MeetingDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            floors: {
-                0: 'ground floor',
-                1: 'first floor',
-                2: 'second floor',
-                3: 'third floor'
-            },
             selected: 0
         }
 
@@ -17,14 +11,12 @@ export default class MeetingDetails extends React.Component {
     }
 
     componentDidMount(){
-        console.log(this.state.floors)
         this.selectFloor(0);
     }
 
     selectFloor(floor){
-        this.setState({
-            'selected':floor,
-        })
+        console.log(floor)
+        this.props.setFloor(floor)
         this.forceUpdate()
     }
 
@@ -33,12 +25,12 @@ export default class MeetingDetails extends React.Component {
             <div className="left-panel building-view">
                 {this.props.selectedBuilding}
                 <div className="floor-display">
-                    {Object.entries(this.state.floors).map(([key, value]) => 
-                        <div className={`floor ${this.state.selected == key ? "selected" : ""}`} id={"floor-"+key} onClick={() => this.selectFloor(key)}></div>
+                    {Object.entries(this.props.floors).map(([key, value]) => 
+                        <div className={`floor ${this.props.selectedFloor == key ? "selected" : ""}`} id={"floor-"+key} onClick={() => this.selectFloor(key)}></div>
                     )}
                 </div>
                 <div>
-                    {this.state.floors[this.state.selected]}
+                    {this.props.floors[this.props.selectedFloor]}
                 </div>
             </div>
         );

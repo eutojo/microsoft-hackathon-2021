@@ -8,21 +8,48 @@ export default class LocationDetails extends React.Component {
     }
 
     setBuilding(e){
-        this.props.setBuilding(e.target.value);
+        this.props.setBuilding(e);
     }
+
     render(){
         return(
             <div className="right-panel">
                 <div className="tab">
-                    <div>Room</div>
-                    <div>Schedule</div>
+                    <div className="selected">Room Finder</div>
+                    <div>Scheduler</div>
                 </div>
                 <div className="content">
-                    Building
-                    <select onChange={(e) => this.setBuilding(e)}>
-                        <option disabled selected value> -- select an option -- </option>
+                    <div className="row">
+                        <div>Building</div>
+                        <div onClick={() => this.setBuilding("")} >Clear Filters</div>
+                    </div>
+                    <select onChange={(e) => this.setBuilding(e.target.value)}>
+                        <option disabled selected value> Select a building </option>
                         <option name="foundry">Foundry</option>
                         <option name="axle">Axle</option>
+                    </select>
+                    <div className="row double">
+                        <div>
+                            <div>Capacity</div>
+                            <select disabled>
+                                <option disabled selected value> Any </option>
+                            </select>
+                        </div>
+                        <div>
+                            <div>Floor</div>
+                            <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.value)}>
+                                {this.props.building != "" && Object.entries(this.props.floors).map(([key, value]) => 
+                                    <option value={key} selected={this.props.selectedFloor == key}>{value}</option>
+                                )}
+                                {this.props.building == ""  &&
+                                    <option disabled selected value> Any </option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div className="row">Features</div>
+                    <select disabled>
+                        <option disabled selected value> No features available </option>
                     </select>
                 </div>
             </div>
