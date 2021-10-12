@@ -4,18 +4,13 @@ export default class LocationDetails extends React.Component {
     constructor(props){
         super(props);
 
-        this.setBuilding = this.setBuilding.bind(this);      
         this.clearFilter = this.clearFilter.bind(this);  
     }
 
     clearFilter(){
-        this.setBuilding("")
+        this.props.setBuilding("")
         this.props.setFloor("")
         this.forceUpdate()
-    }
-
-    setBuilding(e){
-        this.props.setBuilding(e);
     }
 
     render(){
@@ -30,7 +25,7 @@ export default class LocationDetails extends React.Component {
                         <div>Building</div>
                         <div onClick={() => this.clearFilter()} >Clear Filters</div>
                     </div>
-                    <select onChange={(e) => this.setBuilding(e.target.value)}>
+                    <select onChange={(e) => this.props.setBuilding(e.target.value)}>
                         <option disabled selected value> Select a building </option>
                         <option name="foundry">Foundry</option>
                         <option name="axle">Axle</option>
