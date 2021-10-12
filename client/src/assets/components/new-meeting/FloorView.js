@@ -13,7 +13,7 @@ export default class MeetingDetails extends React.Component {
     }
 
     async getFloor(){
-        fetch('/floor/1')
+        fetch('/floor/' + this.props.selectedFloor)
         .then(res => res.json())
         .then(res => this.setState({
             floorplan: res

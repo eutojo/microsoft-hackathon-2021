@@ -13,6 +13,7 @@ def index():
 @app.route("/floor/<int:id>")
 def get_floor(id):
     print("SADDS")
+    print(id)
     return data_service.get_floor(id)
 
 @app.route("/building/<int:id>")

@@ -20,11 +20,25 @@ class DataService:
         with open(sample_floor_fn, 'r',) as file:
             self.levels = json.load(file)
 
+        with Image.open('./rawImages/draft.png') as image:
+            self.level1 = DataService.calculate_json(self, image)
+        with Image.open('./rawImages/draft2.png') as image:
+            self.level2 = DataService.calculate_json(self, image)
+        with Image.open('./rawImages/test.png') as image:
+            self.levelall = 
+
         print(self.floors)
         return True
 
     def get_floor(self, floor_id):
-        im = Image.open('./rawImages/test.png')
+        if floor_id == 1:
+            return self.level1
+        elif floor_id == 2:
+            return self.level2
+        else:
+            return self.levelall      
+        
+    def calculate_json(self, im):
         row,col = im.size
         data={} #r,g,b,i,j
         pixels=im.load()
