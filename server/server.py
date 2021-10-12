@@ -10,12 +10,9 @@ data_service.load_data()
 def index():
     return "Hello World!"
 
-@app.route("/time")
-def get_current_time():
-    return {'time': time.time()}
-
 @app.route("/floor/<int:id>")
 def get_floor(id):
+    print("SADDS")
     return data_service.get_floor(id)
 
 @app.route("/building/<int:id>")

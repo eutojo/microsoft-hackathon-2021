@@ -1,4 +1,7 @@
 import json
+from PIL import Image
+import numpy as np
+from flask import jsonify
 
 sample_floor_fn = "./rawMap/sample_floor_metadata.json"
 sample_ground_fn = "./rawMap/sample_floor_metadata.json"
@@ -21,7 +24,17 @@ class DataService:
         return True
 
     def get_floor(self, floor_id):
-        return self.floors
+        im = Image.open('./rawImages/test.png')
+        row,col = im.size
+        data={} #r,g,b,i,j
+        pixels=im.load()
+        im = im.convert('1')
+        for i in range(row):
+            col_data = []
+            for j in range(col):
+                col_data.append(pixels[i,j])
+            data[i] = col_data
+        return jsonify(data)
 
     def get_building(self, building_id):
         return self.levels

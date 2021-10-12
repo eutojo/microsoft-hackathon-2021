@@ -66,6 +66,29 @@
             align-items: center;
             width: 100%
         }
+
+        .plan {
+            width: 10px;
+            height: 10px;
+            &.column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                &.color {
+                    background-color: white
+                }
+
+                &.no-color {
+                    background-color: blue;
+                }
+            }
+
+            &.row {
+                display: flex;
+                flex-direction: row;
+            }
+        }
     }
 }
 
