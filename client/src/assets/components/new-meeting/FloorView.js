@@ -5,7 +5,8 @@ export default class MeetingDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            floorplan: ''
+            floorplan: '',
+            currentFloor: ''
         }
     }
 
@@ -13,8 +14,20 @@ export default class MeetingDetails extends React.Component {
         this.getFloor()
     }
 
+    componentDidUpdate(prevProps){
+        if (this.props.selectedFloor != prevProps.selectedFloor && this.props.selectedFloor['id'] != ""){
+            console.log(this.props.selectedFloor['name'])
+            this.getFloor()
+            this.forceUpdate()
+        }
+    }
+
     async getFloor(){
-        fetch('/floor/' + this.props.selectedFloor)
+        this.setState({
+            currentFloor: this.props.selectedFloor['name']
+        })
+
+        fetch('/floor/' + this.props.selectedFloor['id'])
         .then(res => res.json())
         .then(res => this.setState({
             floorplan: res
@@ -28,7 +41,7 @@ export default class MeetingDetails extends React.Component {
                 <div className="row title">
                     <h1 style={{"margin-left":"1em"}}></h1>
                     <h1>{this.props.selectedBuilding}</h1>
-                    <h1 onClick={() => this.props.setFloor("")} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
+                    <h1 onClick={() => this.props.setFloor("","")} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
                 </div>
                 <div>
                     {this.props.floorplan != "" && Object.entries(this.state.floorplan).map(([floor, value]) => 
@@ -37,7 +50,7 @@ export default class MeetingDetails extends React.Component {
                         </div>
                     )}
                 </div>
-                <h2>{this.props.selectedFloor}</h2>
+                <h2>{this.state.currentFloor}</h2>
             </div>
         );
     }

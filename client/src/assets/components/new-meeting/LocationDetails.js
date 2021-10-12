@@ -9,7 +9,7 @@ export default class LocationDetails extends React.Component {
 
     clearFilter(){
         this.props.setBuilding("")
-        this.props.setFloor("")
+        this.props.setFloor("","")
         this.forceUpdate()
     }
 
@@ -26,7 +26,7 @@ export default class LocationDetails extends React.Component {
                         <div onClick={() => this.clearFilter()} >Clear Filters</div>
                     </div>
                     <select onChange={(e) => this.props.setBuilding(e.target.value)}>
-                        <option disabled selected = {this.props.building == ""} value> Select a building </option>
+                        <option disabled selected={this.props.building == ""} value> Select a building </option>
                         <option name="foundry">Foundry</option>
                         <option name="axle">Axle</option>
                     </select>
@@ -39,10 +39,10 @@ export default class LocationDetails extends React.Component {
                         </div>
                         <div>
                             <div>Floor</div>
-                            <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.value)}>
-                                <option disabled selected value> Select a floor </option>
+                            <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.key, e.target.value)}>
+                                <option disabled={this.props.building != ""} selected value> Select a floor </option>
                                 {this.props.building != "" && Object.entries(this.props.floors).map(([key, value]) => 
-                                    <option value={value}>{value}</option>
+                                    <option id={key} value={value}>{value}</option>
                                 )}
                             </select>
                         </div>

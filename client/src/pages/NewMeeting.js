@@ -15,7 +15,10 @@ export default class NewMeeting extends React.Component {
         super(props);
         this.state = {
             'building': '',
-            'selectedFloor': '',
+            'selectedFloor': {
+                'id': '',
+                'name': ''
+            },
             'floors': {
                 0: 'Ground Floor',
                 1: 'First Floor',
@@ -45,9 +48,12 @@ export default class NewMeeting extends React.Component {
         })
     }
 
-    setFloor(floor){
+    setFloor(id, floor){
         this.setState({
-            'selectedFloor': floor
+            'selectedFloor': {
+                'id': id,
+                'name': floor
+            }
         })
     }
 
@@ -63,14 +69,14 @@ export default class NewMeeting extends React.Component {
                     <div><BsThreeDots/></div>
                 </div>
                 <div className="content-container">
-                    {this.state.building != '' && this.state.selectedFloor == '' &&
+                    {this.state.building != '' && this.state.selectedFloor['id'] ==  "" &&
                         <BuildingView
                             selectedBuilding={this.state.building}
                             setFloor={this.setFloor}
                             floors={this.state.floors}
                             selectedFloor={this.state.selectedFloor}/>
                     }
-                    {this.state.building != '' && this.state.selectedFloor != '' &&
+                    {this.state.building != '' && this.state.selectedFloor['id'] != "" &&
                         <FloorView
                             selectedBuilding={this.state.building}
                             selectedFloor={this.state.selectedFloor}

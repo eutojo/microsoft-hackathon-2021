@@ -20,9 +20,9 @@ export default class MeetingDetails extends React.Component {
         element.innerHTML = floor;
     }
 
-    selectFloor(floor){
+    selectFloor(id, floor){
         this.hoverFloor("")
-        this.props.setFloor(floor)
+        this.props.setFloor(id, floor)
         this.forceUpdate()
     }
 
@@ -32,7 +32,7 @@ export default class MeetingDetails extends React.Component {
                 <h1>{this.props.selectedBuilding}</h1>
                 <div className="floor-display">
                     {Object.entries(this.props.floors).map(([key, value]) => 
-                        <div className="floor" id={"floor-"+key} onClick={() => this.selectFloor(value)} onMouseOver={() => this.hoverFloor(value)} onMouseOut={() => this.hoverFloor("")}></div>
+                        <div className="floor" id={"floor-"+key} onClick={() => this.selectFloor(key, value)} onMouseOver={() => this.hoverFloor(value)} onMouseOut={() => this.hoverFloor("")}></div>
                     )}
                 </div>
                 <h2 id="floor-name">
