@@ -1,0 +1,78 @@
+{
+    "floor_name": "Foundry Level 1",
+    "floor_id": "FDY-L1",
+    "room": [
+        {
+            "room_name": "Foundry Level 1 Room 1",
+            "room_id": "L1-RM01",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Dual LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        },
+        {
+            "room_name": "Foundry Level 1 Room 2",
+            "room_id": "L1-RM02",
+            "capacity": 10,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        },
+        {
+            "room_name": "Foundry Level 1 Room 3",
+            "room_id": "L1-RM03",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        },
+        {
+            "room_name": "Foundry Level 1 Room 4",
+            "room_id": "L1-RM04",
+            "capacity": 4,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        },
+        {
+            "room_name": "Foundry Level 1 Room 5",
+            "room_id": "L1-RM05",
+            "capacity": 5,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        },
+        {
+            "room_name": "Foundry Level 1 Room 6",
+            "room_id": "L1-RM06",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            }
+
+        }
+    ]
+}

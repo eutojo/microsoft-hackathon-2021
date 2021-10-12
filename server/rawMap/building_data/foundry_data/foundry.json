@@ -1,0 +1,27 @@
+{
+    "name": "Foundry",
+    "location": "add_address",
+    "building_id": "FDY",
+    "floor": [
+        {
+            "floor_name": "Foundry Basement 1",
+            "floor_id": "FDY-B1"
+        },
+        {
+            "floor_name": "Foundry Ground level",
+            "floor_id": "FDY-GRD"
+        },
+        {
+            "floor_name": "Foundry Level 1",
+            "floor_id": "FDY-L1"
+        },
+        {
+            "floor_name": "Foundry Level 2",
+            "floor_id": "FDY-L2"
+        },
+        {
+            "floor_name": "Foundry Level 3",
+            "floor_id": "FDY-L3"
+        }
+    ]
+}
