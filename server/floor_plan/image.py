@@ -95,3 +95,22 @@ for i in range(col):
 
 print(bfs(data, (1,1), row, col))
 
+
+{
+  1 : {
+    "start_x" : 1,
+    "start_y" : 1,
+    "end_x" : 1,
+    "end_y" : 4,
+    "distance" : 3,
+    "instruction" : "RIGHT"
+  },
+  2 : {
+    "start_x" : 1,
+    "start_y" : 4,
+    "end_x" : 6,
+    "end_y" : 4,
+    "distance" : 5,
+    "instruction" : "LEFT"
+  }
+}
