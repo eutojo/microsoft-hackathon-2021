@@ -11,51 +11,15 @@
         },
         {
             "className": "booked",
-            "height": "80",
+            "height": "170",
             "stroke": "#666666",
             "type": "rect",
-            "width": "80",
+            "width": "170",
             "x": "0",
             "y": "0"
         },
         {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "130",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "250",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "370",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "490",
-            "y": "0"
-        },
-        {
-            "className": "booked",
+            "className": "free",
             "height": "80",
             "stroke": "#666666",
             "type": "rect",
@@ -69,8 +33,35 @@
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "130",
-            "y": "240"
+            "x": "250",
+            "y": "0"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "490",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "330",
+            "y": "120"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "170",
+            "y": "0"
         },
         {
             "className": "booked",
@@ -79,6 +70,42 @@
             "type": "rect",
             "width": "80",
             "x": "250",
+            "y": "120"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "410",
+            "y": "120"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "330",
+            "y": "0"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "410",
+            "y": "0"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "80",
             "y": "240"
         },
         {
@@ -87,7 +114,7 @@
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "370",
+            "x": "160",
             "y": "240"
         },
         {
@@ -96,7 +123,16 @@
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "490",
+            "x": "240",
+            "y": "240"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "250",
+            "x": "320",
             "y": "240"
         }
     ],
