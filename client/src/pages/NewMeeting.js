@@ -14,17 +14,15 @@ export default class NewMeeting extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            'building': '',
+            'building': {
+                'id': '',
+                'name': ''
+            },
             'selectedFloor': {
                 'id': '',
                 'name': ''
             },
-            'floors': {
-                0: 'Ground Floor',
-                1: 'First Floor',
-                2: 'Second Floor',
-                3: 'Third Floor'
-            }
+            'floors': {}
         }
 
         this.setBuilding = this.setBuilding.bind(this);
@@ -32,13 +30,12 @@ export default class NewMeeting extends React.Component {
         this.setFloors = this.setFloors.bind(this);
     }
 
-    componentDidUpdate(){
-        console.log(this.state.selectedFloor)
-    }
-
-    setBuilding(building){
+    setBuilding(bid, building){
         this.setState({
-            'building': building
+            'building': {
+                'id': bid,
+                'name': building
+            }
         })
     }
 
@@ -49,7 +46,6 @@ export default class NewMeeting extends React.Component {
     }
 
     setFloor(id, floor){
-        console.log(id)
         this.setState({
             'selectedFloor': {
                 'id': id,
@@ -70,21 +66,22 @@ export default class NewMeeting extends React.Component {
                     <div><BsThreeDots/></div>
                 </div>
                 <div className="content-container">
-                    {this.state.building != '' && this.state.selectedFloor['id'] ==  "" &&
+                    {this.state.building['name'] != '' && this.state.selectedFloor['id'] ==  "" &&
                         <BuildingView
                             selectedBuilding={this.state.building}
+                            setFloors={this.setFloors}
                             setFloor={this.setFloor}
                             floors={this.state.floors}
                             selectedFloor={this.state.selectedFloor}/>
                     }
-                    {this.state.building != '' && this.state.selectedFloor['id'] != "" &&
+                    {this.state.building['name'] != '' && this.state.selectedFloor['id'] != "" &&
                         <FloorView
                             selectedBuilding={this.state.building}
                             selectedFloor={this.state.selectedFloor}
                             setFloor={this.setFloor}
                             />
                     }
-                    {this.state.building == '' &&
+                    {this.state.building['name'] == '' &&
                         <MeetingDetails />
                     }
                     <LocationDetails 

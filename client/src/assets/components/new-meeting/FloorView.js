@@ -17,7 +17,6 @@ export default class MeetingDetails extends React.Component {
 
     componentDidUpdate(prevProps){
         if (this.props.selectedFloor != prevProps.selectedFloor && this.props.selectedFloor['id'] != ""){
-            console.log(this.props.selectedFloor['name'])
             this.getFloor()
             this.forceUpdate()
         }
@@ -28,31 +27,25 @@ export default class MeetingDetails extends React.Component {
             currentFloor: this.props.selectedFloor['name']
         })
 
-        console.log(this.props.selectedFloor['name'])
-
-        fetch('/floor/' + this.props.selectedFloor['id'])
+        fetch('/buildings/get/' + this.props.selectedBuilding["id"] + "/" + this.props.selectedFloor['id'])
         .then(res => res.json())
         .then(res => this.setState({
-            floorplan: res['floors'],
-            viewbox: res['viewbox']
+            floorplan: res['floor_data']['room'],
+            viewbox: res['floor_data']['viewbox']
         }))
-        .then(console.log(this.state.floorplan))
-
-        // console.log(this.state.floorplan)
-
     }
 
     render(){
         return(
             <div className="left-panel building-view floor-view">
                 <div className="row title">
-                    <h1 style={{"margin-left":"1em"}}></h1>
-                    <h1>{this.props.selectedBuilding}</h1>
+                    <h1 style={{"marginLeft":"1em"}}></h1>
+                    <h1>{this.props.selectedBuilding["name"]}</h1>
                     <h1 onClick={() => this.props.setFloor("","")} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
                 </div>
                 <div>
                     <svg
-                        style={{'width': '100%'}}
+                        style={{'width': '100%', 'border': '1px solid white'}}
                         xmlns="http://www.w3.org/2000/svg"
                         id="Layer_1"
                         data-name="Layer 1"
@@ -74,7 +67,7 @@ export default class MeetingDetails extends React.Component {
                     </svg>
 
                 </div>
-                <h2 onClick={() => console.log(this.state.floorplan)}>{this.state.currentFloor}</h2>
+                <h2>{this.state.currentFloor}</h2>
             </div>
         );
     }
