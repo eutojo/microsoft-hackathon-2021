@@ -1,15 +1,20 @@
 {
-    "floors": [
-        {
-            "className": "blank",
-            "height": "320",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "570",
-            "x": "0",
-            "y": "0"
-        },
-        {
+    "floor_name": "Foundry Ground Level",
+    "floor_id": "FDY-L0",
+    "map_location": "./rawMap/building_data/foundry_data/FDY-L0_Map.json",
+    "viewbox": "-0.5 -0.5 571 321", 
+    "room": [
+        {   
+            
+            "room_name": "Foundry Ground Level Room 1",
+            "room_id": "L0-RM01",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Dual LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "booked",
             "height": "170",
             "stroke": "#666666",
@@ -17,8 +22,18 @@
             "width": "170",
             "x": "0",
             "y": "0"
+
         },
-        {
+        {   
+            "room_name": "Foundry Ground Level Room 2",
+            "room_id": "L0-RM02",
+            "capacity": 10,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -26,8 +41,19 @@
             "width": "80",
             "x": "0",
             "y": "240"
+            
+
         },
-        {
+        {   
+            "room_name": "Foundry Ground Level Room 3",
+            "room_id": "L0-RM03",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -35,8 +61,18 @@
             "width": "80",
             "x": "250",
             "y": "0"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 4",
+            "room_id": "L0-RM04",
+            "capacity": 4,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -44,8 +80,18 @@
             "width": "80",
             "x": "490",
             "y": "0"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 5",
+            "room_id": "L0-RM05",
+            "capacity": 5,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "booked",
             "height": "80",
             "stroke": "#666666",
@@ -53,8 +99,18 @@
             "width": "80",
             "x": "330",
             "y": "120"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 6",
+            "room_id": "L0-RM06",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "booked",
             "height": "80",
             "stroke": "#666666",
@@ -62,8 +118,18 @@
             "width": "80",
             "x": "170",
             "y": "0"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 7",
+            "room_id": "L0-RM07",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "booked",
             "height": "80",
             "stroke": "#666666",
@@ -71,8 +137,18 @@
             "width": "80",
             "x": "250",
             "y": "120"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 8",
+            "room_id": "L0-RM08",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -80,8 +156,18 @@
             "width": "80",
             "x": "410",
             "y": "120"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 9",
+            "room_id": "L0-RM09",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -89,8 +175,18 @@
             "width": "80",
             "x": "330",
             "y": "0"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 10",
+            "room_id": "L0-RM10",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -98,8 +194,18 @@
             "width": "80",
             "x": "410",
             "y": "0"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 11",
+            "room_id": "L0-RM11",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -107,8 +213,18 @@
             "width": "80",
             "x": "80",
             "y": "240"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 12",
+            "room_id": "L0-RM12",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -116,8 +232,18 @@
             "width": "80",
             "x": "160",
             "y": "240"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 13",
+            "room_id": "L0-RM13",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "booked",
             "height": "80",
             "stroke": "#666666",
@@ -125,8 +251,18 @@
             "width": "80",
             "x": "240",
             "y": "240"
+
         },
         {
+            "room_name": "Foundry Ground Level Room 14",
+            "room_id": "L0-RM14",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
             "className": "free",
             "height": "80",
             "stroke": "#666666",
@@ -134,7 +270,7 @@
             "width": "250",
             "x": "320",
             "y": "240"
+
         }
-    ],
-    "viewbox": "-0.5 -0.5 571 321"
+    ]
 }
