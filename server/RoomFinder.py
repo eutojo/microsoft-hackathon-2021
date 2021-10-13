@@ -41,9 +41,18 @@ class RoomFinder:
     def load_image(self, filename):
         # Import image - 0 for greyscale mode
         img = cv2.imread(filename, 0)
+        print(img)
+        self.display_image(img)
 
         # Image processing
-        img[img == 255] = 1
+        # img[img == 255] = 1
+        # walls are 102
+        img[img == 102] = 0
+        img[img != 0] = 1
+        self.display_image(img)
+        
+
+        # white space
         return img
 
     def convert_to_coordinates(self, matrix):
@@ -143,10 +152,10 @@ class RoomFinder:
 
         return_val = {
             "id": id,
-            "x": first_x,
-            "y": first_y,
-            "height": last_y - first_y + 1,
-            "width": last_x - first_x + 1,
+            "x": first_x-1,
+            "y": first_y-1,
+            "height": last_y - first_y + 2,
+            "width": last_x - first_x + 2,
         }
         return return_val
 
@@ -166,11 +175,12 @@ if __name__ == "__main__":
     x = 1
     y = 1
 
+    # THIS IS ANY COORDINATE THAT IS THE PATH AND NOT ROOMS, you need to include this
     coordinates = (x,y)
     
     rf = RoomFinder()
     rf.get_rooms(filename=filename, path_coord=coordinates)
     # rf.display_rooms()
 
-    print("----PATH----", rf.get_path())
+    # print("----PATH----", rf.get_path())
     print(rf.get_room_json())
