@@ -16,6 +16,7 @@ export default class LocationDetails extends React.Component {
         this.setFloor = this.setFloor.bind(this);
         this.clearFilter = this.clearFilter.bind(this);  
         this.getBuildings = this.getBuildings.bind(this);
+        this.setBookedRoom = this.setBookedRoom.bind(this);
     }
 
     componentDidMount(){
@@ -50,6 +51,11 @@ export default class LocationDetails extends React.Component {
         const fid = element.options[element.selectedIndex].id
 
         this.props.setFloor(fid, floor)
+    }
+
+    setBookedRoom(room){
+        this.props.setBookedRoom(room)
+        this.clearFilter()
     }
 
     render(){
@@ -98,14 +104,14 @@ export default class LocationDetails extends React.Component {
                         </div>)}
                     </div>}
                     
-                    {this.props.room['name'] != '' && 
+                    {this.props.room['name'] != '' && this.props.bookedRoom == '' &&
                     <div className="room-details">
                         <h2>{this.props.room['name']}</h2>
                         <div><FaWheelchair /> Accessibility </div>
                         <div><AiFillSound /> Sound </div>
                         <div><ImDisplay /> Display </div>
                         <div><BsCameraVideo /> Video </div>
-                        <div className="button">Book Room</div>
+                        <div className="button" onClick={() => this.setBookedRoom(this.props.room["name"])}>Book Room</div>
                         <div className="button" onClick={() => this.props.setRoom("", "")}>Cancel</div>
                     </div>}
                 </div>

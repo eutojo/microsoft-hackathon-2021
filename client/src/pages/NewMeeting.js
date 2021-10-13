@@ -27,7 +27,8 @@ export default class NewMeeting extends React.Component {
                 'name': ''
             },
             'floors': {},
-            'roomList': []
+            'roomList': [],
+            'bookedRoom':""
         }
 
         this.setBuilding = this.setBuilding.bind(this);
@@ -35,6 +36,7 @@ export default class NewMeeting extends React.Component {
         this.setFloors = this.setFloors.bind(this);
         this.setRoom = this.setRoom.bind(this);
         this.setRoomList = this.setRoomList.bind(this);
+        this.setBookedRoom = this.setBookedRoom.bind(this)
     }
 
     setBuilding(bid, building){
@@ -76,6 +78,12 @@ export default class NewMeeting extends React.Component {
         })
     }
 
+    setBookedRoom(room){
+        this.setState({
+            bookedRoom: room
+        })
+    }
+
     render(){
         return(
             <div className="window-container">
@@ -110,18 +118,22 @@ export default class NewMeeting extends React.Component {
                             />
                     }
                     {this.state.building['name'] == '' &&
-                        <MeetingDetails />
+                        <MeetingDetails 
+                            bookedRoom = {this.state.bookedRoom}
+                        />
                     }
                     <LocationDetails 
                         setBuilding={this.setBuilding}
                         setFloor={this.setFloor}
                         setRoom={this.setRoom}
                         setRooms={this.setRoomList}
+                        setBookedRoom={this.setBookedRoom}
                         building={this.state.building}
                         floor={this.state.selectedFloor}
                         floors={this.state.floors}
                         room={this.state.selectedRoom}
                         roomList={this.state.roomList}
+                        bookedRoom={this.state.bookedRoom}
                         />
                 </div>
             </div>

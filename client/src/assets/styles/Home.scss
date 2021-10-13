@@ -21,10 +21,11 @@ rect {
 
     &.free {
         fill: green;
-        &:hover {
-            fill: $blue;
-            cursor: pointer;
-        }
+    }
+
+    &:not(.navigate) .free:hover{
+        fill: $blue;
+        cursor: pointer;
     }
 
     &.booked {

@@ -44,7 +44,7 @@ export default class MapDetails extends React.Component {
                                 height={entry["height"]}
                                 fill={entry["fill"]}
                                 stroke={entry["stroke"]}
-                                className={entry["className"]}
+                                className={`navigate ${entry["className"]}`}
                                 id={entry["room_id"]}
                                 /> :
                             <div></div>

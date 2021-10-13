@@ -25,7 +25,7 @@ export default class MeetingDetails extends React.Component {
                     <div><FiRepeat /><div>Repeat</div></div>
                 </div>
                 <div className="entry">
-                    <div><IoLocationOutline/><div>Location</div></div>
+                    <div><IoLocationOutline/><div>{this.props.bookedRoom == "" ? "Location" : this.props.bookedRoom}</div></div>
                 </div>
                 <div className="entry">
                     <div><FiBell /><div>Reminder</div></div>

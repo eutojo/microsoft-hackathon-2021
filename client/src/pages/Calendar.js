@@ -24,8 +24,6 @@ export default class Calendar extends React.Component {
     render(){
         return(
             <div className="window-container mobile-container">
-                
-                {/* map here */}
                 <div className="mobile">
                     <div className="tab">
                         <h3><IoIosArrowBack /></h3>
