@@ -1,6 +1,7 @@
 import React from "react";
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoPersonRemoveOutline } from "react-icons/io5";
+import { MdAddToHomeScreen } from "react-icons/md";
 
 export default class MeetingDetails extends React.Component {
     constructor(props){
@@ -12,6 +13,8 @@ export default class MeetingDetails extends React.Component {
         }
 
         this.selectRoom = this.selectRoom.bind(this)
+        this.setFloor = this.setFloor.bind(this)
+        this.closeBuilding = this.closeBuilding.bind(this)
     }
 
     componentDidMount(){
@@ -59,10 +62,20 @@ export default class MeetingDetails extends React.Component {
 
         fetch('/buildings/get/' + this.props.selectedBuilding["id"] + "/" + this.props.selectedFloor['id'])
         .then(res => res.json())
-        .then(res => this.setState({
-            floorplan: res['floor_data']['room'],
-            viewbox: res['floor_data']['viewbox']
-        }))
+        .then(res => this.setFloor(res['floor_data']['room'], res['floor_data']['viewbox']))
+    }
+
+    setFloor(room, viewbox){
+        this.setState({
+            floorplan: room,
+            viewbox: viewbox
+        })
+        this.props.setRooms(room)
+    }
+
+    closeBuilding(){
+        this.props.setFloor("", "")
+        this.props.setRoom("", "")
     }
 
     render(){
@@ -71,7 +84,7 @@ export default class MeetingDetails extends React.Component {
                 <div className="row title">
                     <h1 style={{"marginLeft":"1em"}}></h1>
                     <h1>{this.props.selectedBuilding["name"]}</h1>
-                    <h1 onClick={() => this.props.setFloor("","")} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
+                    <h1 onClick={() => this.closeBuilding()} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
                 </div>
                 <div>
                     <svg

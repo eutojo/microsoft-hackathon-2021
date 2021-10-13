@@ -62,7 +62,6 @@ export default class NewMeeting extends React.Component {
     }
 
     setRoom(id, room){
-        console.log("ASDASD")
         this.setState({
             'selectedRoom': {
                 'id': id,
@@ -95,12 +94,15 @@ export default class NewMeeting extends React.Component {
                             setFloors={this.setFloors}
                             setFloor={this.setFloor}
                             setRooms={this.setRoomList}
+                            setRoom={this.setRoom}
                             floors={this.state.floors}
                             selectedFloor={this.state.selectedFloor}/>
                     }
                     {this.state.building['name'] != '' && this.state.selectedFloor['id'] != "" &&
                         <FloorView
                             selectedBuilding={this.state.building}
+                            setFloors={this.setFloors}
+                            setRooms={this.setRoomList}
                             selectedFloor={this.state.selectedFloor}
                             room={this.state.selectedRoom}
                             setFloor={this.setFloor}
