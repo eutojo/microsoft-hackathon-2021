@@ -20,7 +20,7 @@ class Pixel:
         return self.id == 2
 
     def is_open(self):
-        return self.id == 1
+        return self.id == 3
 
     def is_wall(self):
         return self.id == 0
@@ -41,7 +41,7 @@ class Pixel:
         self.id = 2
 
     def make_open(self):
-        self.id = 1
+        self.id = 3
     
     # def make_wall(self):
     #     self.id = "WALL"
@@ -66,16 +66,16 @@ class Pixel:
 
     def update_neighbors(self, grid):
         self.neighbors = []
-        if self.x < self.total_rows - 1 and not grid[self.x + 1][self.y].is_closed(): #DOWN
+        if self.x < self.total_rows - 1 and not grid[self.x + 1][self.y].is_wall(): #DOWN
             self.neighbors.append(grid[self.x + 1][self.y])
 
-        if self.x > 0 and not grid[self.x - 1][self.y].is_closed(): #UP
+        if self.x > 0 and not grid[self.x - 1][self.y].is_wall(): #UP
             self.neighbors.append(grid[self.x - 1][self.y])
 
-        if self.y < self.total_cols - 1 and not grid[self.x][self.y + 1].is_closed(): #RIGHT
+        if self.y < self.total_cols - 1 and not grid[self.x][self.y + 1].is_wall(): #RIGHT
             self.neighbors.append(grid[self.x][self.y + 1])
 
-        if self.y > 0 and not grid[self.x][self.y - 1].is_closed(): #LEFT
+        if self.y > 0 and not grid[self.x][self.y - 1].is_wall(): #LEFT
             self.neighbors.append(grid[self.x][self.y - 1])
 
     def get_direction():
@@ -119,8 +119,11 @@ def reconstruct_path(came_from, current, draw):
         current = came_from[current]
         current.make_path()
         draw()
-        tmp_list.append(current)
-        print(tmp_list)
+        tmp_list.append(current.get_pos())
+    
+    tmp_list.reverse()
+    return tmp_list
+    #[(1, 1), (1, 2)]
 
 def astar(draw, grid, start, end):
     count = 0
@@ -139,12 +142,14 @@ def astar(draw, grid, start, end):
 
         current = open_set.get()[2]
         open_set_hash.remove(current)
-
-        if current == end:
+        if current.get_pos() == (24, 35):
+            print(current)
+        if current.get_pos() == end.get_pos():
             #make path/backtrack
-            reconstruct_path(came_from, end, draw)
+            result_path = reconstruct_path(came_from, end, draw)
             end.make_end()
-            return True
+            result_path.append(end.get_pos())
+            return result_path
         for neighbor in current.neighbors:
             temp_g_score = g_score[current] + 1
 
@@ -164,7 +169,7 @@ def astar(draw, grid, start, end):
             current.make_closed()
 
     
-    return None
+    return []
 
 def draw(img_arr, grid):
     for row in grid:
@@ -182,7 +187,8 @@ def update_neighbors(grid):
 
 if __name__ == "__main__":
     id_2_var = {
-        1 : "OPEN",
+        1 : "EMPTY",
+        3 : "OPEN",
         0 : "WALLS",
         2 : "CLOSED",
         9 : "START",
@@ -191,7 +197,8 @@ if __name__ == "__main__":
     }
 
     var_2_id = {
-        "OPEN" : 1,
+        "EMPTY" : 1,
+        "OPEN" : 3,
         "WALLS" : 0,
         "CLOSED" : 2,
         "START" : 9,
@@ -211,15 +218,18 @@ if __name__ == "__main__":
     # y cols
     # x rows
 
-    img_cpy = img
     grid = make_grid(img, x, y)
-    start = grid[1][20]
+    start = grid[20][1]
     end = grid[23][35]
-    start.make_start
-    end.make_end
+    start.make_start()
+    end.make_end()
 
     update_neighbors(grid)
-    astar(lambda: draw(img_cpy, grid), grid, start, end)
+    result_path = astar(lambda: draw(img, grid), grid, start, end)
 
     np.set_printoptions(threshold=sys.maxsize)
-    print(img_cpy)
+    print(img)
+    plt.imshow(img)
+    plt.show()
+
+    print(result_path)
