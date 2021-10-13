@@ -11,47 +11,11 @@
         },
         {
             "className": "booked",
-            "height": "80",
+            "height": "180",
             "stroke": "#666666",
             "type": "rect",
-            "width": "80",
+            "width": "180",
             "x": "0",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "130",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "250",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "370",
-            "y": "0"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "490",
             "y": "0"
         },
         {
@@ -69,25 +33,25 @@
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "130",
-            "y": "240"
-        },
-        {
-            "className": "booked",
-            "height": "80",
-            "stroke": "#666666",
-            "type": "rect",
-            "width": "80",
-            "x": "250",
+            "x": "240",
             "y": "240"
         },
         {
             "className": "free",
+            "height": "250",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "250",
+            "x": "320",
+            "y": "70"
+        },
+        {
+            "className": "booked",
             "height": "80",
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "370",
+            "x": "80",
             "y": "240"
         },
         {
@@ -96,7 +60,7 @@
             "stroke": "#666666",
             "type": "rect",
             "width": "80",
-            "x": "490",
+            "x": "160",
             "y": "240"
         }
     ],
