@@ -1,27 +1,32 @@
 {
     "name": "Foundry",
-    "location": "add_address",
+    "location": "2 Central Ave, Eveleigh NSW 2015",
     "building_id": "FDY",
     "floor": [
         {
             "floor_name": "Foundry Basement 1",
-            "floor_id": "FDY-B1"
+            "floor_id": "FDY-B1",
+            "file_location": ""
         },
         {
             "floor_name": "Foundry Ground level",
-            "floor_id": "FDY-GRD"
+            "floor_id": "FDY-GRD",
+            "file_location": ""
         },
         {
             "floor_name": "Foundry Level 1",
-            "floor_id": "FDY-L1"
+            "floor_id": "FDY-L1",
+            "file_location": "./rawMap/building_data/foundry_data/FDY-L1.json"
         },
         {
             "floor_name": "Foundry Level 2",
-            "floor_id": "FDY-L2"
+            "floor_id": "FDY-L2",
+            "file_location": "./rawMap/building_data/foundry_data/FDY-L2.json"
         },
         {
             "floor_name": "Foundry Level 3",
-            "floor_id": "FDY-L3"
+            "floor_id": "FDY-L3",
+            "file_location": ""
         }
     ]
 }
