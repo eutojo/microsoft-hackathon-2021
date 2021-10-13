@@ -3,6 +3,7 @@ import numpy as np
 import cv2
 import matplotlib.pyplot as plt
 import sys
+import math
 
 class Pixel:
     def __init__(self, x, y, total_rows, total_cols):
@@ -186,50 +187,67 @@ def update_neighbors(grid):
 
 
 if __name__ == "__main__":
-    id_2_var = {
-        1 : "EMPTY",
-        3 : "OPEN",
-        0 : "WALLS",
-        2 : "CLOSED",
-        9 : "START",
-        8 : "END",
-        5 : "PATH"
-    }
+    # id_2_var = {
+    #     1 : "EMPTY",
+    #     3 : "OPEN",
+    #     0 : "WALLS",
+    #     2 : "CLOSED",
+    #     9 : "START",
+    #     8 : "END",
+    #     5 : "PATH"
+    # }
 
-    var_2_id = {
-        "EMPTY" : 1,
-        "OPEN" : 3,
-        "WALLS" : 0,
-        "CLOSED" : 2,
-        "START" : 9,
-        "END" : 8,
-        "PATH" : 5
-    }
-    img = cv2.imread('/mnt/d/ms_hack_2021/microsoft-hackathon-2021/server/floor_plan/test_img.png', 0)
+    # var_2_id = {
+    #     "EMPTY" : 1,
+    #     "OPEN" : 3,
+    #     "WALLS" : 0,
+    #     "CLOSED" : 2,
+    #     "START" : 9,
+    #     "END" : 8,
+    #     "PATH" : 5
+    # }
+    img = cv2.imread('/mnt/d/ms_hack_2021/microsoft-hackathon-2021/server/floor_plan/0.png', 0)
     # plt.imshow(img, cmap = 'gray')
     # plt.show()
-    
+    scale_percent = 25 # percent of original size
+    width = int(img.shape[1] * scale_percent / 100)
+    height = int(img.shape[0] * scale_percent / 100)
+    dim = (width, height)
+
+    # resize image
+    img_resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
     # img = cv2.bitwise_not(img)
-    img[img == 255] = 1
-    plt.imshow(img, cmap = 'gray')
+    img_resized[img_resized != 255] = 0
+    img_resized[img_resized == 255] = 1
+    plt.imshow(img_resized, cmap = 'gray')
     plt.show()
-    x, y = img.shape
+    x, y = img_resized.shape
 
     # y cols
     # x rows
 
-    grid = make_grid(img, x, y)
-    start = grid[20][1]
-    end = grid[23][35]
+    # start_x = math.floor(user_loc[0]/2)
+    # start_y = math.floor(user_loc[1]/2)
+
+    # end_x = math.floor(room_loc[0]/2)
+    # end_y = math.floor(room_loc[1]/2)
+    # start = grid[start_x][start_y]
+    # end = grid[end_x][end_y]
+
+    
+    start = grid[50][1] #100 #3
+    end = grid[29][112] #59 #225
+
+    grid = make_grid(img_resized, x, y)
     start.make_start()
     end.make_end()
 
     update_neighbors(grid)
-    result_path = astar(lambda: draw(img, grid), grid, start, end)
+    result_path = astar(lambda: draw(img_resized, grid), grid, start, end)
 
     np.set_printoptions(threshold=sys.maxsize)
-    print(img)
-    plt.imshow(img)
+    print(img_resized)
+    plt.imshow(img_resized)
     plt.show()
 
     print(result_path)
