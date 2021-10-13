@@ -223,6 +223,7 @@ if __name__ == "__main__":
     plt.show()
     x, y = img_resized.shape
 
+    grid = make_grid(img_resized, x, y)
     # y cols
     # x rows
 
@@ -238,7 +239,6 @@ if __name__ == "__main__":
     start = grid[50][1] #100 #3
     end = grid[29][112] #59 #225
 
-    grid = make_grid(img_resized, x, y)
     start.make_start()
     end.make_end()
 
