@@ -1,14 +1,17 @@
 import React from "react";
 import { AiOutlineClose } from 'react-icons/ai';
+import { IoPersonRemoveOutline } from "react-icons/io5";
 
 export default class MeetingDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
             floorplan: '',
-            currentFloor: '',
+            selectedRoom: '',
             viewbox: ''
         }
+
+        this.selectRoom = this.selectRoom.bind(this)
     }
 
     componentDidMount(){
@@ -20,6 +23,33 @@ export default class MeetingDetails extends React.Component {
             this.getFloor()
             this.forceUpdate()
         }
+
+        if (this.props.room != prevProps.selectedRoom && this.props.room['name'] == ''){
+            const prevId = this.state.selectedRoom
+            const prevEl = document.getElementById(prevId)
+            if ( prevEl && prevEl.classList.contains("selected")){
+                prevEl.classList.remove("selected")
+            }
+        }
+    }
+
+    selectRoom(id, room){
+        const prevId = this.state.selectedRoom
+        const prevEl = document.getElementById(prevId)
+        if ( prevEl && prevEl.classList.contains("selected")){
+            prevEl.classList.remove("selected")
+        }
+
+        const newEl = document.getElementById(id)
+        if ( newEl ){
+            newEl.classList.add("selected")
+        }
+
+        this.setState({
+            selectedRoom: id
+        })
+
+        this.props.setRoom(id, room)
     }
 
     async getFloor(){
@@ -54,13 +84,15 @@ export default class MeetingDetails extends React.Component {
                         {this.state.floorplan != "" && this.state.floorplan.length > 0 && this.state.floorplan.map((entry) => 
                             entry['type'] == 'rect' ?
                             <rect 
-                            x={entry["x"]}
-                            y={entry["y"]}
-                            width={entry["width"]}
-                            height={entry["height"]}
-                            fill={entry["fill"]}
-                            stroke={entry["stroke"]}
-                            className={entry["className"]}
+                                x={entry["x"]}
+                                y={entry["y"]}
+                                width={entry["width"]}
+                                height={entry["height"]}
+                                fill={entry["fill"]}
+                                stroke={entry["stroke"]}
+                                className={entry["className"]}
+                                id={entry["room_id"]}
+                                onClick={() => this.selectRoom(entry["room_id"], entry["room_name"])}
                                 /> :
                             <div></div>
                         )}

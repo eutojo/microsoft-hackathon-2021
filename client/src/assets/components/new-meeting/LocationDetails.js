@@ -1,11 +1,15 @@
 import React from "react";
-import { MdEmojiObjects } from "react-icons/md";
+import { FaWheelchair } from "react-icons/fa";
+import { AiFillSound } from "react-icons/ai";
+import { ImDisplay } from "react-icons/im";
+import { BsCameraVideo } from "react-icons/bs"
 
 export default class LocationDetails extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            buildings: ''
+            buildings: '',
+            floorList: this.props.floorList,
         }
 
         this.setBuilding = this.setBuilding.bind(this);
@@ -21,6 +25,8 @@ export default class LocationDetails extends React.Component {
     clearFilter(){
         this.props.setBuilding('', '')
         this.props.setFloor('', '')
+        this.props.setRoom('', '')
+        this.props.setRooms([])
         this.forceUpdate()
     }
 
@@ -84,6 +90,24 @@ export default class LocationDetails extends React.Component {
                     <select disabled>
                         <option disabled selected value> No features available </option>
                     </select>
+                    {this.props.room['name'] == '' && 
+                    <div className="room-list">
+                        {this.props.roomList.length > 0 && this.props.roomList.map((value) => 
+                        <div onClick={() => this.props.setFloor(value["room_id"], value["room_name"])}>
+                            {value["room_name"]}
+                        </div>)}
+                    </div>}
+                    
+                    {this.props.room['name'] != '' && 
+                    <div className="room-details">
+                        <h2>{this.props.room['name']}</h2>
+                        <div><FaWheelchair /> Accessibility </div>
+                        <div><AiFillSound /> Sound </div>
+                        <div><ImDisplay /> Display </div>
+                        <div><BsCameraVideo /> Video </div>
+                        <div className="button">Book Room</div>
+                        <div className="button" onClick={() => this.props.setRoom("", "")}>Cancel</div>
+                    </div>}
                 </div>
             </div>
         );

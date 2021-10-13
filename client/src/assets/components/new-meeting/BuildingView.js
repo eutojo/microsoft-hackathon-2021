@@ -20,7 +20,9 @@ export default class MeetingDetails extends React.Component {
     async loadBuilding(){
         fetch("/buildings/get/" + this.props.selectedBuilding['id'])
         .then(res => res.json())
-        .then(res => this.props.setFloors(res['floors']))
+        .then(res => {
+            this.props.setFloors(res['floors'])
+            this.props.setRooms(res['rooms'])})
     }
 
     hoverFloor(floor){
