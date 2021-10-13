@@ -1,0 +1,104 @@
+{
+    "map": [
+        {
+            "className": "blank",
+            "height": "320",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "570",
+            "x": "0",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "0",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "130",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "250",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "370",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "490",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "0",
+            "y": "240"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "130",
+            "y": "240"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "250",
+            "y": "240"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "370",
+            "y": "240"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "490",
+            "y": "240"
+        }
+    ],
+    "viewbox": "-0.5 -0.5 571 321"
+}

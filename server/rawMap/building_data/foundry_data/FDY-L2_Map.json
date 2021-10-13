@@ -1,0 +1,68 @@
+{
+    "map": [
+        {
+            "className": "blank",
+            "height": "320",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "570",
+            "x": "0",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "180",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "0",
+            "y": "240"
+        },
+        {
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "240",
+            "y": "240"
+        },
+        {
+            "className": "free",
+            "height": "250",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "250",
+            "x": "320",
+            "y": "70"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "80",
+            "y": "240"
+        },
+        {
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "160",
+            "y": "240"
+        }
+    ],
+    "viewbox": "-0.5 -0.5 571 321"
+}

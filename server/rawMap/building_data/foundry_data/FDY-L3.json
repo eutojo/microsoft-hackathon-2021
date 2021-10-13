@@ -1,0 +1,142 @@
+{
+    "floor_name": "Foundry Level 3",
+    "floor_id": "FDY-L3",
+    "map_location": "./rawMap/building_data/foundry_data/FDY-L3_Map.json",
+    "viewbox": "-0.5 -0.5 571 321", 
+    "room": [
+        {   
+            
+            "room_name": "Foundry Level 3 Room 1",
+            "room_id": "L3-RM01",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Dual LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "booked",
+            "height": "160",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "160",
+            "x": "0",
+            "y": "0"
+
+        },
+        {   
+            "room_name": "Foundry Level 3 Room 2",
+            "room_id": "L3-RM02",
+            "capacity": 10,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "0",
+            "y": "240"
+            
+
+        },
+        {   
+            "room_name": "Foundry Level 3 Room 3",
+            "room_id": "L3-RM03",
+            "capacity": 8,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Projector",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "free",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "240",
+            "y": "0"
+
+        },
+        {
+            "room_name": "Foundry Level 3 Room 4",
+            "room_id": "L3-RM04",
+            "capacity": 4,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "free",
+            "height": "250",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "250",
+            "x": "320",
+            "y": "0"
+
+        },
+        {
+            "room_name": "Foundry Level 3 Room 5",
+            "room_id": "L3-RM05",
+            "capacity": 5,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Standard Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "80",
+            "y": "240"
+
+        },
+        {
+            "room_name": "Foundry Level 3 Room 6",
+            "room_id": "L3-RM06",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "160",
+            "y": "0"
+
+        },
+        {
+            "room_name": "Foundry Level 3 Room 7",
+            "room_id": "L3-RM07",
+            "capacity": 6,
+            "specifications": {
+                "audio": "Conferencing Audio",
+                "display": "Single LCD",
+                "video": "Wide Lens Camera",
+                "accessibility": "Wheelchair"
+            },
+            "className": "booked",
+            "height": "80",
+            "stroke": "#666666",
+            "type": "rect",
+            "width": "80",
+            "x": "160",
+            "y": "240"
+        }
+    ]
+}
