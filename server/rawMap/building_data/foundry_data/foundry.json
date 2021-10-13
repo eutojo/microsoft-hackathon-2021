@@ -4,14 +4,9 @@
     "building_id": "FDY",
     "floor": [
         {
-            "floor_name": "Foundry Basement 1",
-            "floor_id": "FDY-B1",
-            "file_location": ""
-        },
-        {
             "floor_name": "Foundry Ground level",
-            "floor_id": "FDY-GRD",
-            "file_location": ""
+            "floor_id": "FDY-L0",
+            "file_location": "./rawMap/building_data/foundry_data/FDY-L0.json"
         },
         {
             "floor_name": "Foundry Level 1",
@@ -26,7 +21,7 @@
         {
             "floor_name": "Foundry Level 3",
             "floor_id": "FDY-L3",
-            "file_location": ""
+            "file_location": "./rawMap/building_data/foundry_data/FDY-L3.json"
         }
     ]
 }

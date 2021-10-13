@@ -1,11 +1,11 @@
 {
-    "Foundry": {
+    "FDY": {
         "name": "Foundry",
         "location": "2 Central Ave, Eveleigh NSW 2015",
         "building_id": "FDY",
         "file_location": "./rawMap/building_data/foundry_data/foundry.json"
     },
-    "Axle": {
+    "AXL": {
         "name": "Axle",
         "location": "5-7 Central Ave, Eveleigh NSW 2015",
         "building_id": "AXL",
