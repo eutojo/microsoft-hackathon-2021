@@ -49,6 +49,7 @@ export default class NewMeeting extends React.Component {
     }
 
     setFloor(id, floor){
+        console.log(id)
         this.setState({
             'selectedFloor': {
                 'id': id,

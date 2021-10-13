@@ -119,10 +119,34 @@
     }
 
     &.floor-view {
+        justify-content: space-between;
         .title {
             width: 100%;
             align-items: center;
             justify-content: space-between;
+        }
+
+        rect {
+
+            &.blank {
+                fill: white;
+            }
+
+            &.free {
+                fill: green;
+                &:hover {
+                    fill: $blue;
+                    cursor: pointer;
+                }
+            }
+
+            &.booked {
+                fill: #333333;
+            }
+        }
+
+        h2 {
+            height: 2em;
         }
     }
 }

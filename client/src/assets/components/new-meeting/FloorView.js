@@ -6,7 +6,8 @@ export default class MeetingDetails extends React.Component {
         super(props);
         this.state = {
             floorplan: '',
-            currentFloor: ''
+            currentFloor: '',
+            viewbox: ''
         }
     }
 
@@ -27,11 +28,17 @@ export default class MeetingDetails extends React.Component {
             currentFloor: this.props.selectedFloor['name']
         })
 
+        console.log(this.props.selectedFloor['name'])
+
         fetch('/floor/' + this.props.selectedFloor['id'])
         .then(res => res.json())
         .then(res => this.setState({
-            floorplan: res
+            floorplan: res['floors'],
+            viewbox: res['viewbox']
         }))
+        .then(console.log(this.state.floorplan))
+
+        // console.log(this.state.floorplan)
 
     }
 
@@ -44,13 +51,30 @@ export default class MeetingDetails extends React.Component {
                     <h1 onClick={() => this.props.setFloor("","")} style={{"cursor":"pointer"}}><AiOutlineClose /></h1>
                 </div>
                 <div>
-                    {this.props.floorplan != "" && Object.entries(this.state.floorplan).map(([floor, value]) => 
-                        <div className="plan row">
-                            {value.map((points) => <div className={`plan column ${points.includes(255) ? `color` : `no-color`}`} > </div>)}
-                        </div>
-                    )}
+                    <svg
+                        style={{'width': '100%'}}
+                        xmlns="http://www.w3.org/2000/svg"
+                        id="Layer_1"
+                        data-name="Layer 1"
+                        viewBox={this.state.viewbox != '' ? this.state.viewbox : ''}
+                    >
+                        {this.state.floorplan != "" && this.state.floorplan.length > 0 && this.state.floorplan.map((entry) => 
+                            entry['type'] == 'rect' ?
+                            <rect 
+                            x={entry["x"]}
+                            y={entry["y"]}
+                            width={entry["width"]}
+                            height={entry["height"]}
+                            fill={entry["fill"]}
+                            stroke={entry["stroke"]}
+                            className={entry["className"]}
+                                /> :
+                            <div></div>
+                        )}
+                    </svg>
+
                 </div>
-                <h2>{this.state.currentFloor}</h2>
+                <h2 onClick={() => console.log(this.state.floorplan)}>{this.state.currentFloor}</h2>
             </div>
         );
     }
