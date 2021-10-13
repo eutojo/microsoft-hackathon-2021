@@ -1,52 +1,82 @@
 from queue import PriorityQueue
-
+import numpy as np
+import cv2
+import matplotlib.pyplot as plt
+import sys
 
 class Pixel:
-    def __init__(self, row, col, width, total_rows, total_cols):
-        self.row = row
-        self.col = col
-        self.x = row * width
-        self.y = col * width
+    def __init__(self, x, y, total_rows, total_cols):
+        self.x = x
+        self.y = y
         self.neighbors = []
         self.id = 1
-        self.width = width
         self.total_rows = total_rows
         self.total_cols = total_cols
 
     def get_pos(self):
-        return self.row, self.col
+        return self.x, self.y
 
     def is_closed(self):
-        return self.id == 0
+        return self.id == 2
 
     def is_open(self):
         return self.id == 1
 
-    def is_variable(self):
-        #check what variable it is
-        pass
+    def is_wall(self):
+        return self.id == 0
+
+    def is_start(self):
+        return self.id == 9
 
     def is_end(self):
-        return self.id == -1
+        return self.id == 8
 
+    def is_path(self):
+        return self.id == 5
+
+    def reset(self):
+        self.id = 1
+    
+    def make_closed(self):
+        self.id = 2
+
+    def make_open(self):
+        self.id = 1
+    
+    # def make_wall(self):
+    #     self.id = "WALL"
+    
+    def make_start(self):
+        self.id = 9
+
+    def make_end(self):
+        self.id = 8
+
+    def make_path(self):
+        self.id = 5
+
+    def make_variable(self, in_id):
+        self.id = in_id
+    
     def draw(self, img_arr):
         #front-end function
         #set coordinate to path id       
-        pass
+        img_arr[self.x][self.y] = self.id
+
 
     def update_neighbors(self, grid):
         self.neighbors = []
-        if self.row < self.total_rows - 1 and not grid[self.row + 1][self.col].is_closed(): #DOWN
-            self.neighbors.append(grid[self.row + 1][self.col])
+        if self.x < self.total_rows - 1 and not grid[self.x + 1][self.y].is_closed(): #DOWN
+            self.neighbors.append(grid[self.x + 1][self.y])
 
-        if self.row > 0 and not grid[self.row - 1][self.col].is_closed(): #UP
-            self.neighbors.append(grid[self.row - 1][self.col])
+        if self.x > 0 and not grid[self.x - 1][self.y].is_closed(): #UP
+            self.neighbors.append(grid[self.x - 1][self.y])
 
-        if self.col < self.total_rows - 1 and not grid[self.row][self.col + 1].is_closed(): #RIGHT
-            self.neighbors.append(grid[self.row][self.col + 1])
+        if self.y < self.total_cols - 1 and not grid[self.x][self.y + 1].is_closed(): #RIGHT
+            self.neighbors.append(grid[self.x][self.y + 1])
 
-        if self.col > 0 and not grid[self.row][self.col - 1].is_closed(): #LEFT
-            self.neighbors.append(grid[self.row][self.col - 1])
+        if self.y > 0 and not grid[self.x][self.y - 1].is_closed(): #LEFT
+            self.neighbors.append(grid[self.x][self.y - 1])
 
     def get_direction():
         #maybe
@@ -62,15 +92,17 @@ def hero(p1, p2):
     #mannhatten distance
     return abs(x1 - x2) + abs(y1 - y2)
 
-def make_grid(rows, cols, width):
+def make_grid(img_arr, x, y):
     #convert image from image array to array of 'Pixels'
+    # gap = width // rows #give gap between rows
     grid = []
-    gap = width // rows #give gap between rows
-    for i in range(cols):
+    for i in range(x):
         grid.append([])
-        for j in range(rows):
-            pixel = Pixel(i, j, gap, rows, cols)
+        for j in range(y):
+            pixel = Pixel(i, j, x, y)
+            pixel.make_variable(img_arr[i][j])
             grid[i].append(pixel)
+
     return grid
 
 """
@@ -80,6 +112,15 @@ back_track_arr.append(['direction', 'distance to this turn/aka. how many pixels 
 turn left: ETA/distance left
 turn back_track_arr[1][0] == 'direction': back_track_arr[1][1] == 'distance'
 """
+
+def reconstruct_path(came_from, current, draw):
+    tmp_list = []
+    while current in came_from:
+        current = came_from[current]
+        current.make_path()
+        draw()
+        tmp_list.append(current)
+        print(tmp_list)
 
 def astar(draw, grid, start, end):
     count = 0
@@ -100,7 +141,7 @@ def astar(draw, grid, start, end):
         open_set_hash.remove(current)
 
         if current == end:
-            #make path
+            #make path/backtrack
             reconstruct_path(came_from, end, draw)
             end.make_end()
             return True
@@ -125,15 +166,60 @@ def astar(draw, grid, start, end):
     
     return None
 
-# def draw(img_arr, grid, rows, width):
-#     win.fill(WHITE)
+def draw(img_arr, grid):
+    for row in grid:
+        for pixel in row:
+            pixel.draw(img_arr)
 
-#     for row in grid:
-#         for pixel in row:
-#             pixel.draw(id)
-
-#     draw_grid(win, rows, width)
-#     pygame.display.update()
 
 #   return img_arr thats updated
+def update_neighbors(grid):
+    for row in grid:
+        for pixel in row:
+            pixel.update_neighbors(grid)
 
+
+
+if __name__ == "__main__":
+    id_2_var = {
+        1 : "OPEN",
+        0 : "WALLS",
+        2 : "CLOSED",
+        9 : "START",
+        8 : "END",
+        5 : "PATH"
+    }
+
+    var_2_id = {
+        "OPEN" : 1,
+        "WALLS" : 0,
+        "CLOSED" : 2,
+        "START" : 9,
+        "END" : 8,
+        "PATH" : 5
+    }
+    img = cv2.imread('/mnt/d/ms_hack_2021/microsoft-hackathon-2021/server/floor_plan/test_img.png', 0)
+    # plt.imshow(img, cmap = 'gray')
+    # plt.show()
+    
+    # img = cv2.bitwise_not(img)
+    img[img == 255] = 1
+    plt.imshow(img, cmap = 'gray')
+    plt.show()
+    x, y = img.shape
+
+    # y cols
+    # x rows
+
+    img_cpy = img
+    grid = make_grid(img, x, y)
+    start = grid[1][20]
+    end = grid[23][35]
+    start.make_start
+    end.make_end
+
+    update_neighbors(grid)
+    astar(lambda: draw(img_cpy, grid), grid, start, end)
+
+    np.set_printoptions(threshold=sys.maxsize)
+    print(img_cpy)
