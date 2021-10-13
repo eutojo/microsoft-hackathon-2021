@@ -1,3 +1,14 @@
+.window-container {
+    height: 80vh;
+}
+
+.toggle {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 .row {
     display: flex;
     flex-direction: row;
