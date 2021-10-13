@@ -1,28 +1,58 @@
 import json
+from PIL import Image
+import numpy as np
+from flask import jsonify
 
-sample_floor_fn = "./rawMap/sample_floor_metadata.json"
-sample_ground_fn = "./rawMap/sample_floor_metadata.json"
+buildings_json = "./rawMap/building_data/buildings.json"
 
-class DataService:
-    floors = None
-    levels = None
+def get_buildings():
+    with open(buildings_json, "r") as file:
+        buildings = json.load(file)
+    return buildings
 
-    def __init__(self):
-        pass
+def get_building_by_id(id):
+    buildings = get_buildings()
+    file_location = buildings[id]["file_location"]
+    return file_location
 
-    def load_data(self):
-        with open(sample_floor_fn, 'r') as file:
-            self.floors = json.load(file)
+def get_building_info_by_id(building_id):
+    
+    building_floors = get_building_floors(building_id)
+    building_rooms = get_building_rooms_by_floors(building_floors)
 
-        with open(sample_floor_fn, 'r',) as file:
-            self.levels = json.load(file)
+    data = {
+        "floors": building_floors,
+        "rooms": building_rooms
+    }
+    return data
 
-        print(self.floors)
-        return True
+def get_building_floors(building_id):
+    building_file = get_building_by_id(building_id)
+    with open(building_file, "r") as file:
+        building_data = json.load(file)
+    building_floor_data = building_data["floor"]
+    return building_floor_data
 
-    def get_floor(self, floor_id):
-        return self.floors
+def get_building_rooms_by_floors(building_floor_data):
+    building_room_data = []
+    for floor in building_floor_data:
+        if floor["file_location"] != "":
+            with open(floor["file_location"],"r") as file:
+                room_data = json.load(file)
+            building_room_data.extend(room_data["room"])
+    return building_room_data
 
-    def get_building(self, building_id):
-        return self.levels
+def get_floor_info_by_id(building_id, floor_id):
+    building_floors = get_building_floors(building_id)
+    for building_floor in building_floors:
+        if building_floor["floor_id"] == floor_id:
+            floor_file = building_floor["file_location"]
 
+    with open(floor_file, "r") as file:
+        floor = json.load(file)
+    
+    data = {
+        "floor_data": floor
+    }
+
+    return data
