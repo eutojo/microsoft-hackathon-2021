@@ -71,6 +71,3 @@ class DataService:
     def get_building(self, building_id):
         return self.levels
 
-    
-    
-
