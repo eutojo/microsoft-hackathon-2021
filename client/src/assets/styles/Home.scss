@@ -1,4 +1,38 @@
+.window-container {
+    height: 80vh;
+}
+
+.toggle {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
 .row {
     display: flex;
     flex-direction: row;
+}
+
+rect {
+    &.blank {
+        fill: white;
+    }
+
+    &.free {
+        fill: green;
+    }
+
+    &:not(.navigate) .free:hover{
+        fill: $blue;
+        cursor: pointer;
+    }
+
+    &.booked {
+        fill: #333333;
+    }
+
+    &.selected {
+        fill: $blue;
+    }
 }

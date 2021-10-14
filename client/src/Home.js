@@ -1,35 +1,30 @@
 import React from "react";
 import NewMeeting from './pages/NewMeeting'
+import Calendar from './pages/Calendar'
+
+import { BsToggleOff, BsToggleOn } from "react-icons/bs"
 
 export default class Home extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            time: ''
+            toggle: true
         }
-
-        this.fetchTime = this.fetchTime.bind(this);
+        
+        this.toggle = this.toggle.bind(this)
     }
 
-
-    async fetchTime(){
-        fetch('/time')
-        .then(res => res.json())
-        .then(data => this.setState(
-            {
-                'time': data.time,
-            }
-        ))
+    toggle(){
+        this.setState({
+            toggle: !this.state.toggle
+        })
     }
-
-    componentDidMount(){
-        this.fetchTime();
-    }
-
+    
     render(){
         return(
             <div className="container">
-                <NewMeeting />
+                {this.state.toggle ? <NewMeeting /> : <Calendar />}
+                <h1 className="toggle">{this.state.toggle ? <BsToggleOn onClick={() => this.toggle()} /> : <BsToggleOff onClick={() => this.toggle()}/>}</h1>
             </div>
         );
     }

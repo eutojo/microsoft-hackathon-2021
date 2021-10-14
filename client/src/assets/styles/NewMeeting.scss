@@ -1,3 +1,7 @@
+.busy {
+    color: $blue;
+}
+
 .content-container {
     display: flex;
     flex-direction: row;
@@ -7,7 +11,8 @@
 .tab {
     display: flex;
     flex-direction: row;
-    background-color: $grey;
+    background-color: #2e2e2e;
+    color: #c7c8c8;
     width: 100%;
 
     div {
@@ -33,7 +38,18 @@
             
             &:not(:first-of-type){
                 margin-top: 1em;
+            }
 
+            .user {
+                color: white; 
+
+                svg {
+                    color: $blue;
+                }
+
+                div {
+                    border-bottom: none;
+                }
             }
             
             div{
@@ -56,9 +72,16 @@
     &.building-view {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         align-items: center;
         width: 100%;
+
+        &:not(.floor-view){
+            justify-content: space-between;
+        }
+
+        #floor-name {
+            height:2em;
+        }
 
         .floor-display {
             display: flex;
@@ -66,18 +89,59 @@
             align-items: center;
             width: 100%
         }
+
+        h1, h2 {
+            color: white,
+        }
+
+        .plan {
+            width: 50px;
+            height: 1px;
+            &.column {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                &.color {
+                    background-color: white
+                }
+
+                &.no-color {
+                    background-color: blue;
+                }
+            }
+
+            &.row {
+                display: flex;
+                flex-direction: row;
+            }
+        }
+    }
+
+    &.floor-view {
+        justify-content: space-between;
+        .title {
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h2 {
+            height: 2em;
+        }
     }
 }
 
 .right-panel {
     flex: 1;
-
-    background-color: $grey;
+    background-color: #333333;
+    color: white;
 
     .content {
         display: flex;
         flex-direction: column;
         padding: 1em;
+        height: 89%;
 
         select {
             margin-bottom: 1em;
@@ -111,6 +175,43 @@
             }
         }
 
+        .room-list {
+            overflow-y: scroll;
+            div {
+                height: 1em;
+                padding: 0.5em;
+
+                &:hover {
+                    background-color: $blue;
+                    cursor:pointer;
+                }
+            }
+        }
+
+        .room-details {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            border: 1px solid white;
+            padding: 0 0.5em;
+
+            div {
+                height: 1.5em;
+                padding: 0.5em 0.5em;
+
+                &.button {
+                    // margin-top: auto;
+                    // margin-bottom: 0.5em;
+                    border: 1px solid white;
+                    text-align: center;
+
+                    &:hover {
+                        background-color: $blue;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
 
     }
 
@@ -132,7 +233,7 @@
 .floor {
     height: 3.5em;
     width: 50%;
-    border: 1px solid red;
+    border: 1px solid $blue;
     margin: -0.5em 0.5em;
     transform: skew(20deg);
     background-color: white;
@@ -145,7 +246,8 @@
         margin-bottom: 10px;
     }
 
-    &.selected {
-        background-color: red;
+    &:hover {
+        background-color: $blue;
+        cursor: pointer;
     }
 }

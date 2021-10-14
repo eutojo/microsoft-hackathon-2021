@@ -1,14 +1,61 @@
 import React from "react";
+import { FaWheelchair } from "react-icons/fa";
+import { AiFillSound } from "react-icons/ai";
+import { ImDisplay } from "react-icons/im";
+import { BsCameraVideo } from "react-icons/bs"
 
 export default class LocationDetails extends React.Component {
     constructor(props){
         super(props);
+        this.state = {
+            buildings: '',
+            floorList: this.props.floorList,
+        }
 
-        this.setBuilding = this.setBuilding.bind(this);        
+        this.setBuilding = this.setBuilding.bind(this);
+        this.setFloor = this.setFloor.bind(this);
+        this.clearFilter = this.clearFilter.bind(this);  
+        this.getBuildings = this.getBuildings.bind(this);
+        this.setBookedRoom = this.setBookedRoom.bind(this);
     }
 
-    setBuilding(e){
-        this.props.setBuilding(e);
+    componentDidMount(){
+        this.getBuildings()
+    }
+
+    clearFilter(){
+        this.props.setBuilding('', '')
+        this.props.setFloor('', '')
+        this.props.setRoom('', '')
+        this.props.setRooms([])
+        this.forceUpdate()
+    }
+
+    async getBuildings(){
+        fetch('/buildings/get')
+        .then(res => res.json())
+        .then(res => this.setState({
+            buildings: res
+        }))
+    }
+
+    setBuilding(building){
+        const element = document.getElementById("select-building")
+        const bid = element.options[element.selectedIndex].id
+
+        this.props.setBuilding(bid, building)
+    }
+
+    setFloor(floor){
+        const element = document.getElementById("select-floor")
+        const fid = element.options[element.selectedIndex].id
+
+        this.props.setFloor(fid, floor)
+    }
+
+    setBookedRoom(room){
+        this.props.setBookedRoom(room)
+        this.clearFilter()
     }
 
     render(){
@@ -21,12 +68,12 @@ export default class LocationDetails extends React.Component {
                 <div className="content">
                     <div className="row">
                         <div>Building</div>
-                        <div onClick={() => this.setBuilding("")} >Clear Filters</div>
+                        <div onClick={() => this.clearFilter()} >Clear Filters</div>
                     </div>
-                    <select onChange={(e) => this.setBuilding(e.target.value)}>
-                        <option disabled selected value> Select a building </option>
-                        <option name="foundry">Foundry</option>
-                        <option name="axle">Axle</option>
+                    <select id="select-building" onChange={(e) => this.setBuilding(e.target.value)}>
+                        <option disabled selected={this.props.building['name'] == ""} value> Select a building </option>
+                        {this.state.buildings != "" && Object.entries(this.state.buildings).map(([key, value]) =>
+                        <option id={value["building_id"]}>{value["name"]}</option>)}
                     </select>
                     <div className="row double">
                         <div>
@@ -37,13 +84,11 @@ export default class LocationDetails extends React.Component {
                         </div>
                         <div>
                             <div>Floor</div>
-                            <select disabled={this.props.building == ""} onChange={(e) => this.props.setFloor(e.target.value)}>
-                                {this.props.building != "" && Object.entries(this.props.floors).map(([key, value]) => 
-                                    <option value={key} selected={this.props.selectedFloor == key}>{value}</option>
+                            <select id="select-floor" disabled={this.props.building == ""} onChange={(e) => this.setFloor(e.target.value)}>
+                                <option disabled selected value> Select a floor </option>
+                                {this.props.building["name"] != "" && Object.entries(this.props.floors).map(([key, value]) => 
+                                    <option id={value["floor_id"]} value={value["floor_id"]}>{value["floor_id"]}</option>
                                 )}
-                                {this.props.building == ""  &&
-                                    <option disabled selected value> Any </option>
-                                }
                             </select>
                         </div>
                     </div>
@@ -51,6 +96,24 @@ export default class LocationDetails extends React.Component {
                     <select disabled>
                         <option disabled selected value> No features available </option>
                     </select>
+                    {this.props.room['name'] == '' && 
+                    <div className="room-list">
+                        {this.props.roomList.length > 0 && this.props.roomList.map((value) => 
+                        <div onClick={() => this.props.setFloor(value["room_id"], value["room_name"])}>
+                            {value["room_name"]}
+                        </div>)}
+                    </div>}
+                    
+                    {this.props.room['name'] != '' && this.props.bookedRoom == '' &&
+                    <div className="room-details">
+                        <h2>{this.props.room['name']}</h2>
+                        <div><FaWheelchair /> Accessibility </div>
+                        <div><AiFillSound /> Sound </div>
+                        <div><ImDisplay /> Display </div>
+                        <div><BsCameraVideo /> Video </div>
+                        <div className="button" onClick={() => this.setBookedRoom(this.props.room["name"])}>Book Room</div>
+                        <div className="button" onClick={() => this.props.setRoom("", "")}>Cancel</div>
+                    </div>}
                 </div>
             </div>
         );
