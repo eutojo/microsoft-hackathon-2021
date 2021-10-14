@@ -1,6 +1,5 @@
 from flask import Flask, jsonify
 import DataService
-import time
 
 app = Flask(__name__)
 
@@ -23,8 +22,8 @@ def get_floor_info_by_id(building_id, floor_id):
     data = DataService.get_floor_info_by_id(building_id, floor_id)
     return jsonify(data)
 
-@app.route("/instructions/get")
-def get_instructions():
-    data = DataService.get_instructions()
-    return jsonify(data)
-
+# Get user instructions
+@app.route('/instructions/', methods=['GET'])
+def instructions():
+    instructions = DataService.get_instructions(0,0,(0,0))
+    return jsonify(instructions)
