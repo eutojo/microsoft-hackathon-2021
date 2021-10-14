@@ -1,3 +1,4 @@
+from math import floor 
 
 # for coord in cw_spral[1:]:
 def create_instructions(path):
@@ -107,11 +108,11 @@ def create_instruction(start_coord, end_coord, instruction):
 
 def scale_instruction(instruction, scale_factor):
     return {
-        "start_x" : instruction["start_x"]*scale_factor,
-        "start_y" : instruction["start_y"]*scale_factor,
-        "end_x" : instruction["end_x"]*scale_factor,
-        "end_y" : instruction["end_y"]*scale_factor,
-        "distance" : instruction["distance"]*scale_factor,
+        "start_x" : floor(instruction["start_x"]*scale_factor),
+        "start_y" : floor(instruction["start_y"]*scale_factor),
+        "end_x" : floor(instruction["end_x"]*scale_factor),
+        "end_y" : floor(instruction["end_y"]*scale_factor),
+        "distance" : floor(instruction["distance"]*scale_factor),
         "instruction" : instruction["instruction"]
     }
 
@@ -186,6 +187,10 @@ if __name__ == "__main__":
     # print(create_instructions(acw_spiral))
     path = [(50, 1), (49, 1), (48, 1), (47, 1), (46, 1), (45, 1), (44, 1), (43, 1), (43, 2), (43, 3), (43, 4), (43, 5), (43, 6), (43, 7), (43, 8), (43, 9), (43, 10), (43, 11), (43, 12), (43, 13), (43, 14), (43, 15), (43, 16), (43, 17), (43, 18), (43, 19), (43, 20), (43, 21), (43, 22), (43, 23), (43, 24), (43, 25), (43, 26), (43, 27), (43, 28), (43, 29), (43, 30), (43, 31), (43, 32), (43, 33), (43, 34), (43, 35), (43, 36), (43, 37), (43, 38), (43, 39), (43, 40), (43, 41), (43, 42), (43, 43), (42, 43), (41, 43), (40, 43), (39, 43), (38, 43), (37, 43), (36, 43), (35, 43), (34, 43), (33, 43), (32, 43), (31, 43), (30, 43), (29, 43), (29, 44), (29, 45), (29, 46), (29, 47), (29, 48), (29, 49), (29, 50), (29, 51), (29, 52), (29, 53), (29, 54), (29, 55), (29, 56), (29, 57), (29, 58), (29, 59), (29, 60), (29, 61), (28, 61), (28, 62), (28, 63), (28, 64), (28, 65), (28, 66), (28, 67), (28, 68), (28, 69), (28, 70), (28, 71), (28, 72), (28, 73), (28, 74), (28, 75), (28, 76), (28, 77), (28, 78), (28, 79), (28, 80), (28, 81), (28, 82), (28, 83), (28, 84), (28, 85), (28, 86), (28, 87), (28, 88), (28, 89), (28, 90), (28, 91), (28, 92), (28, 93), (28, 94), (28, 95), (28, 96), (28, 97), (28, 98), (28, 99), (28, 100), (28, 101), (28, 102), (28, 103), (28, 104), (28, 105), (28, 106), (28, 107), (28, 108), (28, 109), (28, 110), (28, 111), (28, 112), (29, 112)]
     instructions = create_instructions(path)
+    # print("----Unscaled----")
     instructions = scale_instructions(instructions,4)
+    # print("----Scaled----")
+    # print(instructions)
     instructions = annotate_instructions(instructions)
-    print(instructions)
+    # print("----Scaled----")
+    # print(instructions)
