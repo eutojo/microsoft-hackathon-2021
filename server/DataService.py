@@ -1,7 +1,8 @@
 import json
 from PIL import Image
 import numpy as np
-from flask import jsonify
+from lib.InstructionsFromPath import *
+from lib.PathFind import *
 
 buildings_json = "./rawMap/building_data/buildings.json"
 
@@ -56,3 +57,48 @@ def get_floor_info_by_id(building_id, floor_id):
     }
 
     return data
+
+def get_instructions(building_id, floor_id, current_user_location):
+    img = cv2.imread('./floor_plan/0.png', 0)
+    # plt.imshow(img, cmap = 'gray')
+    # plt.show()
+    scale_percent = 25 # percent of original size
+    width = int(img.shape[1] * scale_percent / 100)
+    height = int(img.shape[0] * scale_percent / 100)
+    dim = (width, height)
+
+    # resize image
+    img_resized = cv2.resize(img, dim, interpolation = cv2.INTER_AREA)
+    # img = cv2.bitwise_not(img)
+    img_resized[img_resized != 255] = 0
+    img_resized[img_resized == 255] = 1
+    x, y = img_resized.shape
+
+    grid = make_grid(img_resized, x, y)
+    # y cols
+    # x rows
+
+    # start_x = math.floor(user_loc[0]/2)
+    # start_y = math.floor(user_loc[1]/2)
+
+    # end_x = math.floor(room_loc[0]/2)
+    # end_y = math.floor(room_loc[1]/2)
+    # start = grid[start_x][start_y]
+    # end = grid[end_x][end_y]
+    
+    start = grid[50][1] #100 #3
+    end = grid[29][112] #59 #225 (50% SCALE)
+
+    start.make_start()
+    end.make_end()
+
+    update_neighbors(grid)
+    result_path = astar(lambda: draw(img_resized, grid), grid, start, end)
+    # print(result_path)
+    result_path = reverse_coordinates(result_path)
+    instructions = create_instructions(result_path)
+    instructions = scale_instructions(instructions,4)
+    instructions = annotate_instructions(instructions)
+    return instructions
+
+    

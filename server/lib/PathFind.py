@@ -206,7 +206,7 @@ if __name__ == "__main__":
     #     "END" : 8,
     #     "PATH" : 5
     # }
-    img = cv2.imread('/mnt/d/ms_hack_2021/microsoft-hackathon-2021/server/floor_plan/0.png', 0)
+    img = cv2.imread('../floor_plan/0.png', 0)
     # plt.imshow(img, cmap = 'gray')
     # plt.show()
     scale_percent = 25 # percent of original size
@@ -234,10 +234,9 @@ if __name__ == "__main__":
     # end_y = math.floor(room_loc[1]/2)
     # start = grid[start_x][start_y]
     # end = grid[end_x][end_y]
-
     
     start = grid[50][1] #100 #3
-    end = grid[29][112] #59 #225
+    end = grid[29][112] #59 #225 (50% SCALE)
 
     start.make_start()
     end.make_end()
@@ -246,7 +245,7 @@ if __name__ == "__main__":
     result_path = astar(lambda: draw(img_resized, grid), grid, start, end)
 
     np.set_printoptions(threshold=sys.maxsize)
-    print(img_resized)
+    # print(img_resized)
     plt.imshow(img_resized)
     plt.show()
 
