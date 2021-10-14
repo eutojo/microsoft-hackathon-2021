@@ -56,3 +56,6 @@ def get_floor_info_by_id(building_id, floor_id):
     }
 
     return data
+
+def get_instructions():
+    return [{"distance":32,"draw_end_x":4,"draw_end_y":200,"draw_start_x":4,"draw_start_y":172,"end_x":4,"end_y":172,"instruction":"RIGHT","start_x":4,"start_y":200},{"distance":172,"draw_end_x":172,"draw_end_y":172,"draw_start_x":4,"draw_start_y":172,"end_x":172,"end_y":172,"instruction":"LEFT","start_x":4,"start_y":172},{"distance":60,"draw_end_x":172,"draw_end_y":172,"draw_start_x":172,"draw_start_y":116,"end_x":172,"end_y":116,"instruction":"RIGHT","start_x":172,"start_y":172},{"distance":76,"draw_end_x":244,"draw_end_y":116,"draw_start_x":172,"draw_start_y":116,"end_x":244,"end_y":116,"instruction":"LEFT","start_x":172,"start_y":116},{"distance":4,"draw_end_x":244,"draw_end_y":116,"draw_start_x":244,"draw_start_y":116,"end_x":244,"end_y":116,"instruction":"RIGHT","start_x":244,"start_y":116},{"distance":208,"draw_end_x":448,"draw_end_y":112,"draw_start_x":244,"draw_start_y":116,"end_x":448,"end_y":112,"instruction":"RIGHT","start_x":244,"start_y":116},{"distance":4,"draw_end_x":448,"draw_end_y":112,"draw_start_x":448,"draw_start_y":112,"end_x":448,"end_y":112,"instruction":"CONTINUE","start_x":448,"start_y":112}]

@@ -3,22 +3,43 @@ import {IoIosArrowBack} from 'react-icons/io'
 import {ImBin} from 'react-icons/im'
 import { FaCircle } from 'react-icons/fa';
 import {AiFillCheckCircle} from 'react-icons/ai'
-import { IoLocationOutline} from 'react-icons/io5';
+import { IoLocationOutline, IoReturnUpForwardSharp, IoReturnUpBackSharp } from 'react-icons/io5';
+import {BsArrow90DegLeft, BsArrow90DegRight, BsArrowUp} from "react-icons/bs"
 import MapDetails from "../assets/components/calender-view/MapView";
 export default class Calendar extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            toggle: false
+            toggle: false,
+            instructions: []
         }
         
         this.toggle = this.toggle.bind(this)
+        this.setInstructions = this.setInstructions.bind(this)
+        this.getIcon = this.getIcon.bind(this)
     }
 
     toggle(){
         this.setState({
             toggle: !this.state.toggle
         })
+    }
+
+    setInstructions(instructions){
+        this.setState({
+            instructions: instructions
+        })
+    }
+
+    getIcon(instruction){
+        switch(instruction){
+            case "RIGHT":
+                return <BsArrow90DegRight/>
+            case "LEFT":
+                return <BsArrow90DegLeft/>
+            case "CONTINUE":
+                return <BsArrowUp/>
+        }
     }
 
     render(){
@@ -61,8 +82,16 @@ export default class Calendar extends React.Component {
                             </div>
                         </div>
                         <div className="info-section map">
-                            {this.state.toggle && <MapDetails />}
-                        </div>    
+                            {this.state.toggle && <MapDetails setInstructions={this.setInstructions} instructions={this.state.instructions} />}
+                        </div>
+                        {this.state.instructions.length > 0 && this.state.instructions.map((entry) => 
+                        <div className="info-section instructions">
+                            <h2>{this.getIcon(entry["instruction"])}</h2>
+                            <div className="data">
+                                <h2>{entry["instruction"]}</h2>
+                            </div>
+                        </div>
+                        )}    
                     </div>    
                 </div>
             </div>

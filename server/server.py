@@ -22,3 +22,9 @@ def get_building_by_id(building_id):
 def get_floor_info_by_id(building_id, floor_id):
     data = DataService.get_floor_info_by_id(building_id, floor_id)
     return jsonify(data)
+
+@app.route("/instructions/get")
+def get_instructions():
+    data = DataService.get_instructions()
+    return jsonify(data)
+
