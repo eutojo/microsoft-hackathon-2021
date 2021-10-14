@@ -1,5 +1,4 @@
 import json
-from PIL import Image
 from lib.InstructionsFromPath import *
 from lib.PathFind import *
 

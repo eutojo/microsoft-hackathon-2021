@@ -75,7 +75,7 @@ export default class Calendar extends React.Component {
                         <div className="info-section">
                             <h2><IoLocationOutline /></h2>
                             <div className="data">
-                                <h2>Foundry Level 1 Room 08</h2>
+                                <h2>Foundry Level 0 Room 08</h2>
                             </div>
                             <div className="data-button" onClick={() => this.toggle()}>
                                 <h2>Navigate</h2>
