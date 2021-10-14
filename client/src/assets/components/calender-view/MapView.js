@@ -29,9 +29,11 @@ export default class MapDetails extends React.Component {
     }
 
     async getInstructions(){
-        fetch("/instructions")
-        .then(res => res.json())
-        .then(res => this.props.setInstructions(res))
+        if(this.props.instructions.length == 0){
+            fetch("/instructions/")
+            .then(res => res.json())
+            .then(res => this.props.setInstructions(res))
+        }
     }
 
     calculate(start, end){

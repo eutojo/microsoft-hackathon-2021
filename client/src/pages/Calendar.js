@@ -84,7 +84,7 @@ export default class Calendar extends React.Component {
                         <div className="info-section map">
                             {this.state.toggle && <MapDetails setInstructions={this.setInstructions} instructions={this.state.instructions} />}
                         </div>
-                        {this.state.instructions.length > 0 && this.state.instructions.map((entry) => 
+                        {this.state.toggle && this.state.instructions.length > 0 && this.state.instructions.map((entry) => 
                         <div className="info-section instructions">
                             <h2>{this.getIcon(entry["instruction"])}</h2>
                             <div className="data">

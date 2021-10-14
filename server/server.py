@@ -23,7 +23,7 @@ def get_floor_info_by_id(building_id, floor_id):
     return jsonify(data)
 
 # Get user instructions
-@app.route('/instructions/', methods=['GET'])
+@app.route('/instructions/')
 def instructions():
     instructions = DataService.get_instructions(0,0,(0,0))
     return jsonify(instructions)
